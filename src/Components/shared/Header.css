@@ -1,0 +1,31 @@
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 12%;
+    background-color: #396822;
+}
+
+.header .header-content {
+    margin: 0 auto;
+    width: 90%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    background-image: url('logo160.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 10%;
+    height: 65%;
+}
+
+.userAvatar {
+    background-color: #E2F0D9;
+    height: 75%;
+    width: 5%;
+    border-radius: 100%;
+}
