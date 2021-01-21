@@ -5,7 +5,7 @@ import './Footer.css'
 const Footer = () => {
     return (
         <div className={"footer"}>
-            <CopyrightIcon className={'copyRight'} size={'small'}/>
+            <CopyrightIcon className={'copy-right'} size={'small'}/>
             <h6>TriGo 2021</h6>
         </div>
     )

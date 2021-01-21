@@ -8,7 +8,11 @@ const ReactRouter = () => {
     return (
         <>
             <Header/>
-            <Route exact path="/" component={TriGo}/>
+            <Route exact path='/' component={TriGo}/>
+            <Route path='/account' component={TriGo}/>
+            <Route path='/favorites' component={TriGo}/>
+            <Route path='/mygroups' component={TriGo}/>
+            <Route path='/requests' component={TriGo}/>
             <Footer/>
         </>
     )

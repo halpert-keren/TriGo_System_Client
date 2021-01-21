@@ -2,7 +2,8 @@
     position: fixed;
     top: 0;
     width: 100%;
-    height: 12%;
+    --header-height: calc(12%);
+    height: calc(12%);
     background-color: #396822;
 }
 
@@ -23,9 +24,18 @@
     height: 65%;
 }
 
-.userAvatar {
-    background-color: #E2F0D9;
-    height: 75%;
-    width: 5%;
-    border-radius: 100%;
+.user-avatar {
+    cursor: pointer;
+}
+
+.menu-list-text {
+    text-decoration: none;
+    color: #213C14;
+}
+
+#menu-list-grow {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-end;
+    background-color: transparent;
 }
