@@ -1,0 +1,19 @@
+.login-page {
+    margin: 0 auto;
+    position: fixed;
+}
+
+.login-form {
+    background-color: #FFFFFF;
+    position: absolute;
+}
+
+.login-btn {
+    /*height: fit-content;*/
+    /*margin-top: 10%;*/
+    /*margin-left: 10%;*/
+    /*display: flex;*/
+    /*flex-flow: column;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+}
