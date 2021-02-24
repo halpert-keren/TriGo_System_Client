@@ -1,0 +1,85 @@
+.form-page {
+    margin: 10% -8%;
+    position: fixed;
+    width: 100%;
+    font-size: 120%;
+}
+
+.form-page .form {
+    margin: 0 auto;
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-page .form-btns {
+    margin: 0 30%;
+    width: 55%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-page .form-btns button {
+    border: none;
+    padding: 1% 2%;
+    font-size: 120%;
+    border-radius: 5px;
+    color: #D8E8CE;
+}
+
+.form-page .form-btns .success {
+    background-color: #396822;
+}
+
+.form-page .form-btns .failure {
+    background-color: #BA0A0A;
+}
+
+.form-page .form .form-left {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 50%;
+}
+
+.form-page .form .form-right {
+    width: 50%;
+}
+
+.form-page .input-grp {
+    display: flex;
+    flex-flow: row nowrap;
+    margin-bottom: 5%;
+}
+
+.form-page .input-grp-right {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-end;
+}
+
+.form-page .input-grp-right label {
+   width: 64%;
+}
+
+.form-page .input-grp label{
+    min-width: 40%;
+    text-align: right;
+    padding-right: 3%;
+}
+
+.form-page .invite-user button {
+    padding: 0;
+}
+
+.form-page input, .form-page select, .form-page textarea{
+    font-family: 'Kanit', sans-serif;
+    color: #213B14;
+    width: 60%;
+    border: 2px solid #213B14;
+    border-radius: 5px;
+    padding: 2%;
+}
+
+.form-page textarea{
+    resize: none;
+}
