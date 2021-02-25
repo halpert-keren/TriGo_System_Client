@@ -1,0 +1,15 @@
+.list-item {
+    width: 90%;
+    margin-bottom: 1%;
+}
+
+.card-content {
+    flex: 1 0 auto;
+}
+
+.card-img {
+    margin: 0.5%;
+    max-height: 90px;
+    max-width: 30%;
+    border-radius: 5px;
+}

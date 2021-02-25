@@ -6,10 +6,10 @@
 
 .navbar button {
     border: none;
-    padding: 0.7% 1.4%;
+    padding: 1% 1.5%;
     font-size: 120%;
-    border-radius: 10px;
+    border-radius: 8px;
     color: #D8E8CE;
     background-color: #396822;
-    margin-right: 2%;
+    margin: 1%;
 }

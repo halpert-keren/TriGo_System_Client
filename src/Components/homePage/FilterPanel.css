@@ -1,4 +1,77 @@
 .filter-panel {
-    background-color: cadetblue;
+    display: flex;
+    flex-flow: column nowrap;
+    width: 100%;
+    height: 100%;
+}
+
+.top-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: center;
+    padding: 1%;
+    width: 95%;
+}
+
+.top-panel div {
+    display: flex;
+    justify-content: space-around;
     width: 40%;
+}
+
+.top-panel button {
+    border: 4px solid #396822;
+    padding: 1% 5%;
+    font-size: 120%;
+    border-radius: 7px;
+    color: #D8E8CE;
+    background-color: #396822;
+}
+
+.top-panel .selected {
+    color: #213C14;
+    background-color: #D8E8CE;
+}
+
+.filter-panel input {
+    border: 4px solid #396822;
+    border-radius: 10px;
+    align-self: center;
+    height: 50px;
+    width: 95%;
+    margin: 6px;
+    padding: 0 10px;
+    color: #213C14;
+}
+
+.bottom-panel {
+    position: fixed;
+    bottom: calc(7%);
+    width: 30%;
+}
+
+.bottom-panel button {
+    border: none;
+    padding: 1% 3%;
+    margin: 3%;
+    font-size: 140%;
+    border-radius: 7px;
+    color: #D8E8CE;
+    background-color: #396822;
+}
+
+.filters {
+    height: 70%;
+    overflow-y: auto;
+}
+
+.filters::-webkit-scrollbar {
+    width: 5px;
+}
+
+.filters::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: none;
+    border-radius: 50px;
 }
