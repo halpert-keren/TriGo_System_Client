@@ -1,16 +1,21 @@
-import React, { Component } from "react";
+import React from "react";
+import './HomePage.css'
+import NavBar from "./NavBar";
+import FilterPanel from "./FilterPanel";
+import ResultList from "./ResultList";
 
-class HomePage extends Component {
-    constructor(props) {
-        super(props)
-    }
-    render() {
-        return(
-            <div>
-                trigo
+const HomePage = (props) => {
+
+    return (
+        <div className={'home-page'}>
+            <FilterPanel/>
+            <div className={'right-side'}>
+                <NavBar/>
+                <ResultList/>
             </div>
-        )
-    }
+        </div>
+    )
+
 }
 
 export default HomePage

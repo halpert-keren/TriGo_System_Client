@@ -1,24 +1,33 @@
 import React from 'react';
 import './Login.css'
-import {GoogleLogin} from 'react-google-login'
 import Header from "../shared/Header";
+import GoogleLogin from "react-google-login";
 
 const Login = (props) => {
 
-return(
-    <>
-        <div className={'login-page'}>
-            <Header/>
-            <div className={'login-form'}/>
+    const googleSuccess = () => {
+
+    }
+
+    const googleFailure = () => {
+
+    }
+
+    return (
+        <>
+            <div className={'login-page'}>
+                <Header/>
+                <div className={'login-form'}/>
                 <div className={'login-btn'}>
                     <h1>Login to TriGo</h1>
                     <GoogleLogin
-                        clientId='554171649210-i97q2kqu31t4hg021qdpmjn9kbobor0h.apps.googleusercontent.com'
+                        clientId='129785276981-93n59qvk1b173ppqq5sf0kq4oskd6t69.apps.googleusercontent.com'
                         onSuccess={googleSuccess}
-                        onFailure={googleFailure} />
+                        onFailure={googleFailure}/>
                 </div>
             </div>
-
-    </>
-)
+        </>
+    )
 }
+
+export default Login

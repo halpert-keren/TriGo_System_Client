@@ -1,0 +1,15 @@
+.navbar {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 2%;
+}
+
+.navbar button {
+    border: none;
+    padding: 0.7% 1.4%;
+    font-size: 120%;
+    border-radius: 10px;
+    color: #D8E8CE;
+    background-color: #396822;
+    margin-right: 2%;
+}
