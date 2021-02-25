@@ -6,7 +6,7 @@ import ScheduleRoundedIcon from '@material-ui/icons/ScheduleRounded';
 import LockRoundedIcon from '@material-ui/icons/LockRounded';
 import GroupRoundedIcon from '@material-ui/icons/GroupRounded';
 
-const id = '6002f97205b43b3cc41d009b'
+const id = '603796c923a5b04718d1298f'
 const GroupPage = (props) => {
     const [group, setGroup] = useState({});
 
