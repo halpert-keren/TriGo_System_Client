@@ -93,11 +93,13 @@ const GroupForm = (props) => {
                         <textarea name="Description" rows={10} value={description}
                                   onChange={e => setDescription(e.target.value)}/>
                     </div>
-                </div>
-            </div>
+
+
             <div className={'form-btns'}>
                 <button className={'success'} onClick={addNewGroup}>Create</button>
                 <button className={'failure'} onClick={() => history.goBack()}>Cancel</button>
+            </div>
+            </div>
             </div>
         </div>
     )

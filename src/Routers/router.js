@@ -6,6 +6,7 @@ import Footer from "../Components/shared/Footer";
 import Header from "../Components/shared/Header";
 import GroupForm from "../Components/groupPage/NewGroupForm";
 import GroupPage from "../Components/groupPage/GroupPage";
+import TrailPage from "../Components/trailPage/TrailPage";
 
 const ReactRouter = () => {
     return (
@@ -18,6 +19,7 @@ const ReactRouter = () => {
             <Route path='/requests' component={HomePage}/>
             <Route path='/new-group' component={GroupForm}/>
             <Route path='/group' component={GroupPage}/>
+            <Route path='/trail' component={TrailPage}/>
             <Footer/>
         </>
     )
