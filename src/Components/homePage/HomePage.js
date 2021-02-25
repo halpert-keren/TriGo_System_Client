@@ -8,7 +8,9 @@ const HomePage = (props) => {
 
     return (
         <div className={'home-page'}>
-            <FilterPanel/>
+            <div className={'left-side'}>
+                <FilterPanel/>
+            </div>
             <div className={'right-side'}>
                 <NavBar/>
                 <ResultList/>
