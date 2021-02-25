@@ -1,12 +1,16 @@
 .home-page {
-    margin: 8% auto;
+    margin: 0 auto;
     position: fixed;
+    top: calc(12%);
     width: 100%;
     display: flex;
 }
 
 .right-side {
+    width: 70%;
+}
 
-    width: 60%;
+.left-side {
+    width: 30%;
 }
 
