@@ -17,7 +17,6 @@ const Login = (props) => {
         <>
             <div className={'login-page'}>
                 <Header/>
-                <div/>
                 <div className={'login-form'}/>
                 <div className={'login-btn'}>
                     <h1>Login to TriGo</h1>
