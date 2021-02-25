@@ -1,85 +1,56 @@
-.form-page {
-    margin: 10% -8%;
+.group-page {
+    margin: 6% auto;
     position: fixed;
     width: 100%;
     font-size: 120%;
-}
-
-.form-page .form {
-    margin: 0 auto;
-    width: 70%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.form-page .form-btns {
-    margin: 0 30%;
-    width: 55%;
-    display: flex;
-    justify-content: space-between;
-}
-
-.form-page .form-btns button {
-    border: none;
-    padding: 1% 2%;
-    font-size: 120%;
-    border-radius: 5px;
-    color: #D8E8CE;
-}
-
-.form-page .form-btns .success {
-    background-color: #396822;
-}
-
-.form-page .form-btns .failure {
-    background-color: #BA0A0A;
-}
-
-.form-page .form .form-left {
-    display: flex;
-    flex-flow: column nowrap;
-    width: 50%;
-}
-
-.form-page .form .form-right {
-    width: 50%;
-}
-
-.form-page .input-grp {
     display: flex;
     flex-flow: row nowrap;
-    margin-bottom: 5%;
+    justify-content: space-between;
+    z-index: -1;
 }
 
-.form-page .input-grp-right {
+.group-page .group-page-img {
+    width: 65%;
+}
+
+.group-page .group-page-img img{
+    object-fit: cover;
+    width: 100%;
+}
+
+.group-page .group-page-info {
+    margin: 2%;
+    max-width: 30%;
+    color: #213C14;
+}
+
+.group-page-info .info-item {
     display: flex;
-    flex-flow: column nowrap;
-    align-items: flex-end;
+    align-items: center;
+    margin-bottom: 2%;
+    max-width: 90%;
 }
 
-.form-page .input-grp-right label {
-   width: 64%;
+.info-item p {
+    font-size: 120%;
 }
 
-.form-page .input-grp label{
-    min-width: 40%;
-    text-align: right;
-    padding-right: 3%;
+.info-item h3 {
+    margin-left: 3%;
+    font-size: 120%;
+    font-weight: normal;
 }
 
-.form-page .invite-user button {
-    padding: 0;
+.group-page-info h1 {
+    margin-bottom: 2%;
 }
 
-.form-page input, .form-page select, .form-page textarea{
-    font-family: 'Kanit', sans-serif;
-    color: #213B14;
-    width: 60%;
-    border: 2px solid #213B14;
+.group-page-info button {
+    border: none;
+    margin-top: 4%;
+    padding: 1% 4%;
+    font-size: 130%;
     border-radius: 5px;
-    padding: 2%;
-}
-
-.form-page textarea{
-    resize: none;
+    color: #D8E8CE;
+    background-color: #396822;
 }

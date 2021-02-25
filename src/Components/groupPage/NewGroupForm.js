@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import './GroupPage.css'
+import './NewGroupForm.css'
 import {useHistory} from "react-router-dom";
 import {IconButton} from "@material-ui/core";
 import AddRoundedIcon from '@material-ui/icons/AddRounded';

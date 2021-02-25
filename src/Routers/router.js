@@ -5,6 +5,7 @@ import Login from "../Components/login/Login";
 import Footer from "../Components/shared/Footer";
 import Header from "../Components/shared/Header";
 import GroupForm from "../Components/groupPage/NewGroupForm";
+import GroupPage from "../Components/groupPage/GroupPage";
 
 const ReactRouter = () => {
     return (
@@ -16,6 +17,7 @@ const ReactRouter = () => {
             <Route path='/mygroups' component={HomePage}/>
             <Route path='/requests' component={HomePage}/>
             <Route path='/new-group' component={GroupForm}/>
+            <Route path='/group' component={GroupPage}/>
             <Footer/>
         </>
     )
