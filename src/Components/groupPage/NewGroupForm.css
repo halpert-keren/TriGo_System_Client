@@ -1,28 +1,40 @@
 .form-page {
-    margin: 10% -8%;
-    position: fixed;
     width: 100%;
-    font-size: 120%;
+    height: 100%;
+    margin-top: 3%;
+    flex-wrap: wrap;
+    /*position: fixed;*/
+    /*margin: 10% -8%;*/
+    /*position: fixed;*/
+    /*width: 100%;*/
+    /*font-size: 120%;*/
 }
 
 .form-page .form {
-    margin: 0 auto;
-    width: 70%;
+    margin-top: 3px;
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 90%;
+    position: absolute;
+    /*position: absolute;*/
+    /*margin: 0 auto;*/
+    /*width: 70%;*/
+    /*display: flex;*/
+    /*justify-content: space-between;*/
 }
 
 .form-page .form-btns {
-    margin: 0 30%;
-    width: 55%;
     display: flex;
-    justify-content: space-between;
+    position: relative;
+    justify-content: space-around;
+    left: 20%;
+    top: 20%;
 }
 
 .form-page .form-btns button {
     border: none;
     padding: 1% 2%;
-    font-size: 120%;
+    font-size: 100%;
     border-radius: 5px;
     color: #D8E8CE;
 }
@@ -33,15 +45,19 @@
 
 .form-page .form-btns .failure {
     background-color: #BA0A0A;
+    /*margin-left: 30%;*/
 }
 
 .form-page .form .form-left {
     display: flex;
+    flex-wrap: wrap;
+    position: relative;
     flex-flow: column nowrap;
     width: 50%;
 }
 
 .form-page .form .form-right {
+    position: relative;
     width: 50%;
 }
 
@@ -63,7 +79,8 @@
 
 .form-page .input-grp label{
     min-width: 40%;
-    text-align: right;
+    position: relative;
+    left: 30px;
     padding-right: 3%;
 }
 
