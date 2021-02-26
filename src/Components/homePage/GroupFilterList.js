@@ -99,8 +99,8 @@ const GroupFilterList = (props) => {
 
         if (accessibilityChecks[4]) url = url.concat('accessibility=Wheelchair-Accessible&')
 
-        if (picnicAreaChecks[1]) url = url.concat('picnicArea=true&')
-        if (picnicAreaChecks[2]) url = url.concat('picnicArea=false&')
+        if (picnicAreaChecks[1]) url = url.concat('picnicArea=false&')
+        if (picnicAreaChecks[2]) url = url.concat('picnicArea=true&')
 
         if (lengthChecks[1]) url = url.concat('length=Less-than-1-km&')
         if (lengthChecks[2]) url = url.concat('length=1-to-5-km&')
