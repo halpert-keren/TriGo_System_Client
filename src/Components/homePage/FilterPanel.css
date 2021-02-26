@@ -6,6 +6,7 @@
 }
 
 .top-panel {
+    height: 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -33,7 +34,9 @@
     color: #213C14;
     background-color: #D8E8CE;
 }
-
+.search-panel {
+    height: 8%;
+}
 .filter-panel input {
     border: 4px solid #396822;
     border-radius: 10px;
@@ -49,6 +52,7 @@
     position: fixed;
     bottom: calc(7%);
     width: 30%;
+    height: 10%;
 }
 
 .bottom-panel button {
@@ -62,8 +66,8 @@
 }
 
 .filters {
-    height: 70%;
-    overflow-y: auto;
+    /*max-height: calc(100% - 10% - 8% -5%);*/
+    max-height: 340px;
 }
 
 .filters::-webkit-scrollbar {
@@ -71,7 +75,6 @@
 }
 
 .filters::-webkit-scrollbar-thumb {
-    background-color: darkgrey;
     outline: none;
     border-radius: 50px;
 }

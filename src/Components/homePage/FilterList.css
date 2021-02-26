@@ -1,0 +1,14 @@
+.filter-list {
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+.filter-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.filter-list::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: none;
+    border-radius: 50px;
+}
