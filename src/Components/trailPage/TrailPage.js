@@ -10,7 +10,7 @@ import AccessibleRoundedIcon from '@material-ui/icons/AccessibleRounded';
 import Brightness4RoundedIcon from '@material-ui/icons/Brightness4Rounded';
 import LocalMallRoundedIcon from '@material-ui/icons/LocalMallRounded';
 
-const id = '6002f703d3563a184879b552'
+const id = '600481161f767f3dfc3b78ce'
 const TrailPage = (props) => {
     const [trail, setTrail] = useState({});
 
@@ -37,7 +37,7 @@ const TrailPage = (props) => {
     return (
         <div className={'trail-page'}>
             <div className={'trail-page-info'}>
-                <h1>{trail.trailName}</h1>
+                <h1>{trail.name}</h1>
                 <div className={'info-item'}>
                     <LocationOnRoundedIcon fontSize={'large'}/>
                     <h3>{trail.location}</h3>
@@ -48,7 +48,7 @@ const TrailPage = (props) => {
                 </div>
                 <div className={'info-item'}>
                     <EmojiFlagsRoundedIcon fontSize={'large'}/>
-                    <h3>{trail.area}</h3>
+                    <h3>{trail.area? trail.area : 'no info'}</h3>
                 </div>
                 <div className={'info-item'}>
                     <FitnessCenterRoundedIcon fontSize={'large'}/>
@@ -64,7 +64,7 @@ const TrailPage = (props) => {
                 </div>
                 <div className={'info-item'}>
                     <RestaurantRoundedIcon fontSize={'large'}/>
-                    <h3>{trail.picnicArea}</h3>
+                    <h3>{trail.picnicArea? 'yes' : 'no'}</h3>
                 </div>
                 <div className={'info-item'}>
                     <ScheduleRoundedIcon fontSize={'large'}/>
@@ -72,7 +72,7 @@ const TrailPage = (props) => {
                 </div>
                 <div className={'info-item'}>
                     <LocalMallRoundedIcon fontSize={'large'}/>
-                    <h3>{trail.equipment}</h3>
+                    <h3>{trail.equipment === undefined ? 'no info' : (trail.equipment.map((item, i) => <span key={i}>{item}{' /'}</span>))}</h3>
                 </div>
                 <div className={'info-item'}>
                     <p>{trail.description}</p>

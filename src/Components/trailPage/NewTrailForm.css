@@ -1,0 +1,110 @@
+.form-page {
+    /*width: 100%;*/
+    /*height: 80%;*/
+    flex-wrap: wrap;
+    top: 12%;
+    overflow-y: auto;
+    /*position: absolute;*/
+    margin: 0 auto;
+}
+
+.form-page .form {
+    /*position: absolute;*/
+    padding-top: 3%;
+    display: flex;
+    flex-wrap: wrap;
+    height: 80%;
+}
+
+.form-page .form-btns {
+    display: flex;
+    position: relative;
+    justify-content: space-around;
+    left: 20%;
+    top: 20%;
+}
+
+.form-page .form-btns button {
+    border: none;
+    padding: 1% 2%;
+    font-size: 100%;
+    border-radius: 5px;
+    color: #D8E8CE;
+}
+
+.form-page .form-btns .success {
+    background-color: #396822;
+}
+
+.form-page .form-btns .failure {
+    background-color: #BA0A0A;
+}
+
+.form-page .form .form-left {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    flex-flow: column nowrap;
+    width: 50%;
+}
+
+.form-page .form .form-right {
+    position: relative;
+    width: 50%;
+}
+
+.form-page .input-grp {
+    display: flex;
+    flex-flow: row nowrap;
+    margin-bottom: 5%;
+}
+
+.form-page .input-grp-right {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-end;
+}
+
+.form-page .input-grp-right label {
+    width: 64%;
+    margin-bottom: 10px;
+}
+
+.form-page .input-grp label{
+    min-width: 40%;
+    position: relative;
+    left: 30px;
+    padding-right: 3%;
+}
+
+.form-page .invite-user button {
+    padding: 0;
+}
+
+.form-page input, .form-page select, .form-page textarea{
+    font-family: 'Kanit', sans-serif;
+    color: #213B14;
+    width: 60%;
+    border: 2px solid #213B14;
+    border-radius: 5px;
+    padding: 2%;
+}
+
+.form-page textarea{
+    resize: none;
+}
+.photo{
+    margin-top: 1%;
+    margin-bottom: 6%;
+}
+
+.upload{
+    position: absolute;
+    border: none;
+    padding: 1% 2%;
+    font-size: 80%;
+    border-radius: 5px;
+    margin-bottom: 6%;
+    color: #D8E8CE;
+    background-color: #396822;
+}
