@@ -3,22 +3,16 @@
     height: 100%;
     position: absolute;
     flex-wrap: wrap;
-    /*margin: 6% auto;*/
-    /*position: fixed;*/
-    /*width: 100%;*/
-    /*font-size: 120%;*/
-    /*display: flex;*/
-    /*flex-flow: row nowrap;*/
-    /*justify-content: space-between;*/
-    /*z-index: -1;*/
 }
 
 .group-page .group-page-img img{
+    object-fit: cover;
     display: flex;
     position: absolute;
     width: 70%;
+    height: 100%;
     left: 30%;
-    top: 0px;
+    top: 0;
 }
 
 .group-page .group-page-info {
