@@ -7,6 +7,7 @@ import Header from "../Components/shared/Header";
 import GroupForm from "../Components/groupPage/NewGroupForm";
 import GroupPage from "../Components/groupPage/GroupPage";
 import TrailPage from "../Components/trailPage/TrailPage";
+import TrailForm from "../Components/trailPage/NewTrailForm";
 
 const ReactRouter = () => {
     return (
@@ -20,6 +21,7 @@ const ReactRouter = () => {
             <Route path='/new-group' component={GroupForm}/>
             <Route path='/group' component={GroupPage}/>
             <Route path='/trail' component={TrailPage}/>
+            <Route path='/new-trail' component={TrailForm}/>
             <Footer/>
         </>
     )
