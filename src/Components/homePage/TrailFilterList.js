@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import './FilterList.css'
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -10,13 +10,13 @@ import {Checkbox} from "@material-ui/core";
 
 
 const TrailFilterList = (props) => {
-    const [openArea, setOpenArea] = React.useState(false);
-    const [openDifficulty, setOpenDifficulty] = React.useState(false);
-    const [openAccessibility, setOpenAccessibility] = React.useState(false);
-    const [openPicnicArea, setOpenPicnicArea] = React.useState(false);
-    const [openLength, setOpenLength] = React.useState(false);
-    const [openLengthOfTime, setOpenLengthOfTime] = React.useState(false);
-    const [openTimeOfDay, setOpenTimeOfDay] = React.useState(false);
+    const [openArea, setOpenArea] = useState(false);
+    const [openDifficulty, setOpenDifficulty] = useState(false);
+    const [openAccessibility, setOpenAccessibility] = useState(false);
+    const [openPicnicArea, setOpenPicnicArea] = useState(false);
+    const [openLength, setOpenLength] = useState(false);
+    const [openLengthOfTime, setOpenLengthOfTime] = useState(false);
+    const [openTimeOfDay, setOpenTimeOfDay] = useState(false);
 
     const areaFilter = (
         <Collapse in={openArea}>
@@ -116,11 +116,15 @@ const TrailFilterList = (props) => {
             <List disablePadding>
                 <ListItem>
                     <Checkbox checked={false}/>
-                    <ListItemText primary="Easy"/>
+                    <ListItemText primary="None"/>
                 </ListItem>
                 <ListItem>
                     <Checkbox checked={false}/>
-                    <ListItemText primary="Hard"/>
+                    <ListItemText primary="Picnic tables only"/>
+                </ListItem>
+                <ListItem>
+                    <Checkbox checked={false}/>
+                    <ListItemText primary="Full picnic facilities"/>
                 </ListItem>
             </List>
         </Collapse>
@@ -131,11 +135,23 @@ const TrailFilterList = (props) => {
             <List disablePadding>
                 <ListItem>
                     <Checkbox checked={false}/>
-                    <ListItemText primary="Easy"/>
+                    <ListItemText primary="Less than 1 km"/>
                 </ListItem>
                 <ListItem>
                     <Checkbox checked={false}/>
-                    <ListItemText primary="Hard"/>
+                    <ListItemText primary="1 to 5 km"/>
+                </ListItem>
+                <ListItem>
+                    <Checkbox checked={false}/>
+                    <ListItemText primary="5 to 10 km"/>
+                </ListItem>
+                <ListItem>
+                    <Checkbox checked={false}/>
+                    <ListItemText primary="10 to 20 km"/>
+                </ListItem>
+                <ListItem>
+                    <Checkbox checked={false}/>
+                    <ListItemText primary="More than 20 km"/>
                 </ListItem>
             </List>
         </Collapse>
@@ -145,11 +161,23 @@ const TrailFilterList = (props) => {
             <List disablePadding>
                 <ListItem>
                     <Checkbox checked={false}/>
-                    <ListItemText primary="Easy"/>
+                    <ListItemText primary="Less than an hour"/>
                 </ListItem>
                 <ListItem>
                     <Checkbox checked={false}/>
-                    <ListItemText primary="Hard"/>
+                    <ListItemText primary="1 to 3 hours"/>
+                </ListItem>
+                <ListItem>
+                    <Checkbox checked={false}/>
+                    <ListItemText primary="3 to 6 hours"/>
+                </ListItem>
+                <ListItem>
+                    <Checkbox checked={false}/>
+                    <ListItemText primary="6 to 10 hours"/>
+                </ListItem>
+                <ListItem>
+                    <Checkbox checked={false}/>
+                    <ListItemText primary="More than 10 hours"/>
                 </ListItem>
             </List>
         </Collapse>
@@ -159,11 +187,15 @@ const TrailFilterList = (props) => {
             <List disablePadding>
                 <ListItem>
                     <Checkbox checked={false}/>
-                    <ListItemText primary="Easy"/>
+                    <ListItemText primary="Morning"/>
                 </ListItem>
                 <ListItem>
                     <Checkbox checked={false}/>
-                    <ListItemText primary="Hard"/>
+                    <ListItemText primary="Afternoon"/>
+                </ListItem>
+                <ListItem>
+                    <Checkbox checked={false}/>
+                    <ListItemText primary="Night"/>
                 </ListItem>
             </List>
         </Collapse>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import './ListItem.css'
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -13,10 +13,10 @@ const ListItem = (props) => {
                 <CardActionArea className={'card-item'} style={{display: 'flex'}} onClick={() => {}}>
                     <CardContent className={'card-content'}>
                         <Typography variant="h5">
-                            name of trail
+                            {props.item.name}
                         </Typography>
                         <Typography variant="subtitle1">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam...
+                            {props.item.description}
                         </Typography>
                     </CardContent>
                     <CardMedia className={'card-img'}

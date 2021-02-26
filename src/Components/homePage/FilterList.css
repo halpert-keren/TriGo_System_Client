@@ -12,3 +12,8 @@
     outline: none;
     border-radius: 50px;
 }
+
+input {
+    width: 60%;
+    height: 30px;
+}
