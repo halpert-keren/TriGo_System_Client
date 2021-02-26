@@ -5,19 +5,19 @@ import GroupFilterList from "./GroupFilterList";
 
 
 const FilterPanel = (props) => {
-    // const [selected, setSelected] = useState('trails');
+    const [selected, setSelected] = useState('trails');
 
     return (
         <div className={'filter-panel'}>
             <div className={'top-panel'}>
                 <h1>Search</h1>
                 <div>
-                    <button className={props.selected === 'trails' ? 'selected' : ''}
-                            onClick={() => props.setSelected('trails')}
+                    <button className={selected === 'trails' ? 'selected' : ''}
+                            onClick={() => {setSelected('trails'); props.setUrl(`http://localhost:3000/api/trails/`)}}
                     >Trails
                     </button>
-                    <button className={props.selected === 'groups' ? 'selected' : ''}
-                            onClick={() => props.setSelected('groups')}
+                    <button className={selected === 'groups' ? 'selected' : ''}
+                            onClick={() => {setSelected('groups'); props.setUrl(`http://localhost:3000/api/groups/`)}}
                     >Groups
                     </button>
                 </div>
@@ -26,14 +26,13 @@ const FilterPanel = (props) => {
                 <input type={'search'}/>
             </div>
             <div className={'filters'}>
-                {props.selected === 'trails' ? <TrailFilterList/> : <GroupFilterList/>}
+                {selected === 'trails' ? <TrailFilterList setUrl={props.setUrl}/> : <GroupFilterList setUrl={props.setUrl}/>}
             </div>
             <div className={'bottom-panel'}>
                 <button>Search</button>
             </div>
         </div>
     )
-
 }
 
 export default FilterPanel

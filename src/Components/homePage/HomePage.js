@@ -6,13 +6,10 @@ import ResultList from "./ResultList";
 
 const HomePage = (props) => {
     const [itemList, setItemList] = useState([]);
-    const [selected, setSelected] = useState('trails');
+    const [url, setUrl] = useState('');
 
     useEffect(() => {
-        let url = `http://localhost:3000/api/groups/`
-        if(selected === 'trails')
-            url = `http://localhost:3000/api/trails/`
-
+        console.log(url)
         fetch(url, {
             credentials: 'include',
             headers: {'Content-Type': 'application/json'}
@@ -21,12 +18,12 @@ const HomePage = (props) => {
             .then(result => {
                 setItemList(result)
             })
-    }, [selected])
+    }, [url])
 
     return (
         <div className={'home-page'}>
             <div className={'left-side'}>
-                <FilterPanel selected={selected} setSelected={setSelected}/>
+                <FilterPanel setUrl={setUrl}/>
             </div>
             <div className={'right-side'}>
                 <NavBar/>
