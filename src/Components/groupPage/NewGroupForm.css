@@ -1,13 +1,10 @@
 .form-page {
     width: 100%;
-    height: 100%;
-    margin-top: 3%;
+    height: 80%;
     flex-wrap: wrap;
-    /*position: fixed;*/
-    /*margin: 10% -8%;*/
-    /*position: fixed;*/
-    /*width: 100%;*/
-    /*font-size: 120%;*/
+    overflow-y: auto;
+    position: fixed;
+    top: calc(14%);
 }
 
 .form-page .form {
@@ -16,11 +13,6 @@
     flex-wrap: wrap;
     width: 90%;
     position: absolute;
-    /*position: absolute;*/
-    /*margin: 0 auto;*/
-    /*width: 70%;*/
-    /*display: flex;*/
-    /*justify-content: space-between;*/
 }
 
 .form-page .form-btns {
@@ -45,7 +37,6 @@
 
 .form-page .form-btns .failure {
     background-color: #BA0A0A;
-    /*margin-left: 30%;*/
 }
 
 .form-page .form .form-left {
