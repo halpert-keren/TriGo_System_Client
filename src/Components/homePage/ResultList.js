@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import './ResultList.css'
 import ListItem from "../shared/ListItem";
 
 const ResultList = (props) => {
     const eachItem = (item, index) => {
-        return (<ListItem key={index} item={item}/>)
+        return (<ListItem key={index} item={item} path={props.path}/>)
     }
     
     return (

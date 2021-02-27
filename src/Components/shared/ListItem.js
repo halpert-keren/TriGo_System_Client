@@ -5,12 +5,24 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import {CardActionArea} from "@material-ui/core";
+import {useHistory} from "react-router-dom";
 
 const ListItem = (props) => {
+    let history = useHistory();
+
+    const itemAction = () => {
+        console.log('path: ')
+        console.log(props.path)
+        history.push({
+            pathname: props.path,
+            data: props.item._id
+        })
+    }
+
     return (
         <div className={'list-item'}>
             <Card className={'card'} elevation={5}>
-                <CardActionArea className={'card-item'} style={{display: 'flex'}} onClick={() => {}}>
+                <CardActionArea className={'card-item'} style={{display: 'flex'}} onClick={itemAction}>
                     <CardContent className={'card-content'}>
                         <Typography variant="h5">
                             {props.item.name}

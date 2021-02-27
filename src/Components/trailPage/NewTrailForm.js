@@ -64,7 +64,7 @@ const TrailForm = (props) => {
                         </div>
                         {location.map((item, index) => {
                             return (
-                                <div className={'input-grp'}>
+                                <div key={index} className={'input-grp'}>
                                     <label>Location</label>
                                     <input name="Invite User" value={item.location}
                                            onChange={e => {

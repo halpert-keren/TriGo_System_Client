@@ -16,7 +16,7 @@ const TrailPage = (props) => {
     const [trail, setTrail] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/trails/${id}`, {
+        fetch(`http://localhost:3000/api/trails/${props.location.data}`, {
             credentials: 'include',
             headers: {'Content-Type': 'application/json'}
         })

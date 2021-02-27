@@ -2,13 +2,14 @@ import React, {useState, useEffect} from "react";
 import './MyGroups.css'
 import ListItem from "../shared/ListItem";
 import Header from "../shared/Header";
+import {useCookies} from "react-cookie";
 
-const id = '6002d4fe60075a2e14bfa282';
 const MyGroups = (props) => {
+    const [cookies] = useCookies(['user']);
     const [groupList, setGroupList] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/groups/?userID=${id}`, {
+        fetch(`http://localhost:3000/api/groups/?userID=${cookies.user.googleID}`, {
             credentials: 'include',
             headers: {'Content-Type': 'application/json'}
         })
@@ -19,7 +20,7 @@ const MyGroups = (props) => {
     }, [])
 
     const eachItem = (item, index) => {
-        return (<ListItem key={index} item={item}/>)
+        return (<ListItem key={index} item={item} path={'/group'}/>)
     }
 
     return (
@@ -33,7 +34,6 @@ const MyGroups = (props) => {
             </div>
         </>
     )
-
 }
 
 export default MyGroups

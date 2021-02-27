@@ -8,6 +8,7 @@ import Header from "../shared/Header";
 const HomePage = (props) => {
     const [itemList, setItemList] = useState([]);
     const [url, setUrl] = useState('');
+    const [selected, setSelected] = useState('trails');
 
     useEffect(() => {
         console.log(url)
@@ -24,11 +25,11 @@ const HomePage = (props) => {
             <Header/>
             <div className={'home-page'}>
                 <div className={'left-side'}>
-                    <FilterPanel setUrl={setUrl}/>
+                    <FilterPanel setUrl={setUrl} selected={selected} setSelected={setSelected}/>
                 </div>
                 <div className={'right-side'}>
                     <NavBar/>
-                    <ResultList list={itemList}/>
+                    <ResultList list={itemList} path={ selected === 'trails' ? '/trail': '/group'}/>
                 </div>
             </div>
         </>
