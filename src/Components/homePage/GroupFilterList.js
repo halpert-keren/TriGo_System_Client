@@ -38,7 +38,9 @@ const GroupFilterList = (props) => {
     });
     const [openAccessibility, setOpenAccessibility] = useState(false);
     const [accessibilityChecks, setAccessibilityChecks] = useState({
-        1: false
+        1: false,
+        2: false,
+        3: false
     });
     const [openPicnicArea, setOpenPicnicArea] = useState(false);
     const [picnicAreaChecks, setPicnicAreaChecks] = useState({
@@ -97,7 +99,9 @@ const GroupFilterList = (props) => {
         if (difficultyChecks[3]) url = url.concat('difficulty=Hard&')
         if (difficultyChecks[4]) url = url.concat('difficulty=Extreme&')
 
-        if (accessibilityChecks[4]) url = url.concat('accessibility=Wheelchair-Accessible&')
+        if (accessibilityChecks[1]) url = url.concat('accessibility=Kid-friendly&')
+        if (accessibilityChecks[2]) url = url.concat('accessibility=Wheelchair-Accessible&')
+        if (accessibilityChecks[3]) url = url.concat('accessibility=Car-accessible&')
 
         if (picnicAreaChecks[1]) url = url.concat('picnicArea=false&')
         if (picnicAreaChecks[2]) url = url.concat('picnicArea=true&')
@@ -241,7 +245,23 @@ const GroupFilterList = (props) => {
                                   setAccessibilityChecks({...accessibilityChecks, 1: !accessibilityChecks[1]})
                                   getUrl()
                               }}/>
-                    <ListItemText primary="Wheelchair Accessible"/>
+                    <ListItemText primary="Kid friendly"/>
+                </ListItem>
+                <ListItem>
+                    <Checkbox checked={accessibilityChecks[2]} color={'default'}
+                              onChange={() => {
+                                  setAccessibilityChecks({...accessibilityChecks, 2: !accessibilityChecks[2]})
+                                  getUrl()
+                              }}/>
+                    <ListItemText primary="Wheelchair accessible"/>
+                </ListItem>
+                <ListItem>
+                    <Checkbox checked={accessibilityChecks[3]} color={'default'}
+                              onChange={() => {
+                                  setAccessibilityChecks({...accessibilityChecks, 3: !accessibilityChecks[3]})
+                                  getUrl()
+                              }}/>
+                    <ListItemText primary="Car accessible"/>
                 </ListItem>
             </List>
         </Collapse>
