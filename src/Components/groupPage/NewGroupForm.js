@@ -4,19 +4,24 @@ import {useHistory} from "react-router-dom";
 import {IconButton} from "@material-ui/core";
 import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import Header from "../shared/Header";
+import {useCookies} from "react-cookie";
 
 const GroupForm = (props) => {
     let history = useHistory()
 
+    const [cookies] = useCookies(['user']);
     const [groupName, setGroupName] = useState('');
     const [trailName, setTrailName] = useState('');
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
     const [privacy, setPrivacy] = useState('No');
-    const [inviteUser, setInviteUser] = useState([{user: ''}]);
+    const [inviteUser, setInviteUser] = useState(['']);
     const [description, setDescription] = useState('');
 
     const addNewGroup = () => {
+        if(inviteUser[inviteUser.length-1]==='')
+            inviteUser.pop()
+        inviteUser.unshift(cookies.user.googleID)
         const body = {
             name: groupName,
             trail: trailName,
@@ -26,6 +31,7 @@ const GroupForm = (props) => {
             description: description,
             users: inviteUser
         }
+        console.log(body)
         fetch(`http://localhost:3000/api/groups`, {
             method: 'POST',
             credentials: 'include',
@@ -75,15 +81,15 @@ const GroupForm = (props) => {
                         </div>
                         {inviteUser.map((item, index) => {
                             return (
-                                <div className={'input-grp'}>
+                                <div key={index} className={'input-grp'}>
                                     <label>Invite User</label>
-                                    <input name="Invite User" value={item.user}
+                                    <input name="Invite User" value={item}
                                            onChange={e => {
                                                const list = [...inviteUser];
-                                               list[index]['user'] = e.target.value;
+                                               list[index] = e.target.value;
                                                setInviteUser(list)
                                            }}/>
-                                    <IconButton onClick={() => setInviteUser(oldArray => [...oldArray, {user: ''}])}>
+                                    <IconButton onClick={() => setInviteUser(oldArray => [...oldArray, ''])}>
                                         <AddRoundedIcon style={{color: '#213C14'}}/>
                                     </IconButton>
                                 </div>

@@ -7,12 +7,11 @@ import LockRoundedIcon from '@material-ui/icons/LockRounded';
 import GroupRoundedIcon from '@material-ui/icons/GroupRounded';
 import Header from "../shared/Header";
 
-const id = '603796c923a5b04718d1298f'
 const GroupPage = (props) => {
     const [group, setGroup] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/groups/${id}`, {
+        fetch(`http://localhost:3000/api/groups/${props.location.data}`, {
             credentials: 'include',
             headers: {'Content-Type': 'application/json'}
         })

@@ -2,23 +2,22 @@ import React, {useState, useEffect} from "react";
 import './SavedTrails.css'
 import ListItem from "../shared/ListItem";
 import Header from "../shared/Header";
+import {useCookies} from "react-cookie";
 
-const id = '6002d4fe60075a2e14bfa282';
 const MyTrails = (props) => {
+    const [cookies] = useCookies(['user']);
     const [trailList, setTrailList] = useState([]);
     const [user, setUser] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/users/${id}`, {
+        fetch(`http://localhost:3000/api/users/${cookies.user.googleID}`, {
             credentials: 'include',
             headers: {'Content-Type': 'application/json'}
         })
             .then(response => response.json())
             .then(result => {
-                console.log(result.savedTrails)
                 setUser(result)
                 result.savedTrails.forEach((trail) => {
-
                     fetch(`http://localhost:3000/api/trails/${trail}`, {
                         credentials: 'include',
                         headers: {'Content-Type': 'application/json'}
@@ -32,7 +31,7 @@ const MyTrails = (props) => {
     }, [])
 
     const eachItem = (item, index) => {
-        return (<ListItem key={index} item={item}/>)
+        return (<ListItem key={index} item={item} path={'/trail'}/>)
     }
 
     return (
