@@ -6,8 +6,6 @@
 }
 
 .top-panel {
-    margin-top: 1%;
-    height: 7%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -18,13 +16,12 @@
 
 .top-panel div {
     display: flex;
-    justify-content: space-around;
-    width: 40%;
+    width: 50%;
 }
 
 .top-panel button {
     border: 4px solid #396822;
-    margin-top: 1%;
+    margin-left: 10px;
     padding: 1% 5%;
     font-size: 120%;
     border-radius: 7px;
@@ -37,50 +34,9 @@
     background-color: #D8E8CE;
 }
 
-.search-panel {
-    height: 15%;
-}
-
-.filter-panel input {
-    border: 4px solid #396822;
-    border-radius: 10px;
-    align-self: center;
-    height: 50px;
-    width: 95%;
-    margin: 6px;
-    padding: 0 10px;
-    color: #213C14;
-}
-
-.bottom-panel {
-    position: fixed;
-    bottom: calc(7%);
-    width: 30%;
-    height: 10%;
-}
-
-.bottom-panel button {
-    border: none;
-    padding: 1% 3%;
-    margin: 3%;
-    font-size: 140%;
-    border-radius: 7px;
-    color: #D8E8CE;
-    background-color: #396822;
-}
-
 .filters {
-    /*max-height: calc(100% - 10% - 15% -7%);*/
-    max-height: 310px;
-}
-
-.filters input {
-    border: 3px solid #757575;
-    height: 30px;
-    width: 90%;
-    margin-right: 5px;
-    padding: 0 6px;
-    border-radius: 3px;
+    max-height: 330px;
+    padding-top: 12px;
 }
 
 .filters::-webkit-scrollbar {
