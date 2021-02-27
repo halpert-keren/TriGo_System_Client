@@ -24,7 +24,7 @@ const Requests = (props) => {
     return (
         <div className={'my-requests'}>
             <h2>My Requests</h2>
-            <div className={'result-list'}>
+            <div className={'R-result-list'}>
                 {requestsList.map(eachItem)}
             </div>
         </div>

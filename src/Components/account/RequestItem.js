@@ -70,9 +70,9 @@ const RequestListItem = (props) => {
 
     return (
         <div className={'list-item'}>
-            <Card className={'card'} elevation={5}>
+            <Card className={'R-card'} elevation={5}>
                 {/*<CardActionArea className={'card-item'} style={{display: 'flex'}} onClick={() => {}}>*/}
-                <CardContent className={'card-content'}>
+                <CardContent className={'R-card-content'}>
                     <Typography variant="h5">
                         {group.name}
                     </Typography>

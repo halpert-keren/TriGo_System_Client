@@ -26,15 +26,9 @@ const FilterPanel = (props) => {
                     </button>
                 </div>
             </div>
-            <div className={'search-panel'}>
-                <input type={'search'}/>
-            </div>
             <div className={'filters'}>
                 {props.selected === 'trails' ? <TrailFilterList setUrl={props.setUrl}/> :
                     <GroupFilterList setUrl={props.setUrl}/>}
-            </div>
-            <div className={'bottom-panel'}>
-                <button>Search</button>
             </div>
         </div>
     )
