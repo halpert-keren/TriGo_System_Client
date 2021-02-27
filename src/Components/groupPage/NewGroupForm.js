@@ -66,8 +66,8 @@ const GroupForm = (props) => {
                         <label>Privacy</label>
                         <select name="Privacy" value={privacy}
                                 onChange={e => setPrivacy(e.target.value)}>
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option>
+                            <option value={true}>Yes</option>
+                            <option value={false}>No</option>
                         </select>
                     </div>
                     {inviteUser.map((item, index) => {
@@ -78,14 +78,14 @@ const GroupForm = (props) => {
                                        onChange={e => {
                                            const list = [...inviteUser];
                                            list[index]['user'] = e.target.value;
-                                           setInviteUser(list)}}/>
+                                           setInviteUser(list)
+                                       }}/>
                                 <IconButton onClick={() => setInviteUser(oldArray => [...oldArray, {user: ''}])}>
                                     <AddRoundedIcon style={{color: '#213C14'}}/>
                                 </IconButton>
                             </div>
                         )
-                    })
-                    }
+                    })}
                 </div>
                 <div className={'form-right'}>
                     <div className={'input-grp-right'}>
@@ -93,13 +93,11 @@ const GroupForm = (props) => {
                         <textarea name="Description" rows={10} value={description}
                                   onChange={e => setDescription(e.target.value)}/>
                     </div>
-
-
-            <div className={'form-btns'}>
-                <button className={'success'} onClick={addNewGroup}>Create</button>
-                <button className={'failure'} onClick={() => history.goBack()}>Cancel</button>
-            </div>
-            </div>
+                    <div className={'form-btns'}>
+                        <button className={'success'} onClick={addNewGroup}>Create</button>
+                        <button className={'failure'} onClick={() => history.goBack()}>Cancel</button>
+                    </div>
+                </div>
             </div>
         </div>
     )

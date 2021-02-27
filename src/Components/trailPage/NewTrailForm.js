@@ -67,24 +67,31 @@ const TrailForm = (props) => {
                                        onChange={e => {
                                            const list = [...location];
                                            list[index]['location'] = e.target.value;
-                                           setLocation(list)}}/>
+                                           setLocation(list)
+                                       }}/>
                                 <IconButton onClick={() => setLocation(oldArray => [...oldArray, {location: ''}])}>
                                     <AddRoundedIcon style={{color: '#213C14'}}/>
                                 </IconButton>
                             </div>
                         )
-                    })
-                    }
+                    })}
                     <div className={'input-grp'}>
                         <label>Area</label>
                         <select name="Area" value={area}
                                 onChange={e => setArea(e.target.value)}>
-                            <option value="Central">Central</option>
-                            <option value="Southern">Southern</option>
-                            <option value="Northern">Northern</option>
-                            <option value="Haifa">Haifa</option>
-                            <option value="Tel-Aviv">Tel-Aviv</option>
-                            <option value="Beer-Sheva">Beer-Sheva</option>
+                            <option value="Golan-Heights">Golan Heights</option>
+                            <option value="Upper-Galilee">Upper Galilee</option>
+                            <option value="Lower-Galilee">Lower Galilee</option>
+                            <option value="Western-Galilee">Western Galilee</option>
+                            <option value="Coastal-Plain">Coastal Plain</option>
+                            <option value="Mount-Carmel">Mount Carmel</option>
+                            <option value="Jezreel-Valley">Jezreel Valley</option>
+                            <option value="Judea-and-Samaria">Judea and Samaria</option>
+                            <option value="Shephelah">Shephelah</option>
+                            <option value="Central-District">Central District</option>
+                            <option value="Aravah">Aravah</option>
+                            <option value="Northern-Negev">Northern Negev</option>
+                            <option value="Southern-Negev">Southern Negev</option>
                         </select>
                     </div>
                     <div className={'input-grp'}>
@@ -93,21 +100,28 @@ const TrailForm = (props) => {
                                 onChange={e => setDifficulty(e.target.value)}>
                             <option value="Easy">Easy</option>
                             <option value="Intermediate">Intermediate</option>
-                            <option value="Expert">Expert</option>
+                            <option value="Hard">Hard</option>
+                            <option value="Extreme">Extreme</option>
                         </select>
                     </div>
                     <div className={'input-grp'}>
                         <label>Length</label>
-                        <input required name="Length" value={length}
-                               onChange={e => setLength(e.target.value)}/>
+                        <select required name="Length" value={length}
+                                onChange={e => setLength(e.target.value)}>
+                            <option value="Less-than-1-km">Less than 1 km</option>
+                            <option value="1-to-5-km">1 to 5 km</option>
+                            <option value="5-to-10-km">5 to 10 km</option>
+                            <option value="10-to-20-km">10 to 20 km</option>
+                            <option value="More-than-20-km">More than 20 km</option>
+                        </select>
                     </div>
                     <div className={'input-grp'}>
                         <label>Accessibility</label>
                         <select name="Accessibility" value={accessibility}
                                 onChange={e => setAccessibility(e.target.value)}>
-                            <option value="kid friendly">kid friendly</option>
-                            <option value="wheelchair accessible">wheelchair accessible</option>
-                            <option value="Car accessible">Car accessible</option>
+                            <option value="Kid-friendly">Kid friendly</option>
+                            <option value="Wheelchair-Accessible">Wheelchair accessible</option>
+                            <option value="Car-accessible">Car accessible</option>
                         </select>
                     </div>
                     <div className={'input-grp'}>
@@ -123,18 +137,19 @@ const TrailForm = (props) => {
                         <label>Length of Time</label>
                         <select name="LengthOfTime" value={lengthOfTime}
                                 onChange={e => setLengthOfTime(e.target.value)}>
-                            <option value="Less than an hour">Less than an hour</option>
-                            <option value="1 to 3">1 to 3</option>
-                            <option value="4 to 6">4 to 6</option>
-                            <option value="overnight">overnight</option>
+                            <option value="Less-than-an-hour">Less than an hour</option>
+                            <option value="1-to-3-hours">1 to 3 hours</option>
+                            <option value="3-to-6-hours">3 to 6 hours</option>
+                            <option value="6-to-10-hours">6 to 10 hours</option>
+                            <option value="More-than-10-hours">More than 10 hours</option>
                         </select>
                     </div>
                     <div className={'input-grp'}>
                         <label>Picnic Area</label>
                         <select name="PicnicArea" value={picnicArea}
                                 onChange={e => setPicnicArea(e.target.value)}>
-                            <option value="Yes">Yes</option>
-                            <option value="No">No</option>
+                            <option value={true}>Yes</option>
+                            <option value={false}>No</option>
                         </select>
                     </div>
                 </div>
@@ -150,8 +165,6 @@ const TrailForm = (props) => {
                         <textarea name="Description" rows={10} value={description}
                                   onChange={e => setDescription(e.target.value)}/>
                     </div>
-
-
                     <div className={'form-btns'}>
                         <button className={'success'} onClick={addNewTrail}>Create</button>
                         <button className={'failure'} onClick={() => history.goBack()}>Cancel</button>
