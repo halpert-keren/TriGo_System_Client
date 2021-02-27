@@ -12,7 +12,6 @@ const RequestListItem = (props) => {
     const [group, setGroup] = useState({});
 
     useEffect(() => {
-
         fetch(`http://localhost:3000/api/groups/${props.item.groupID}`, {
             credentials: 'include',
             headers: {'Content-Type': 'application/json'}
@@ -22,6 +21,52 @@ const RequestListItem = (props) => {
                 setGroup(result)
             })
     }, [])
+
+    const acceptRequest = () =>{
+        const body = {
+            status : 'approved'
+        }
+
+        fetch(`http://localhost:3000/api/requests/${props.item._id}`, {
+            method: 'PUT',
+            credentials: 'include',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(body),
+        })
+            .then(response => response.json())
+            .then(result => {
+                console.log(result)
+            })
+    }
+
+    const declineRequest = () =>{
+        const body = {
+            status : 'declined'
+        }
+
+        fetch(`http://localhost:3000/api/requests/${props.item._id}`, {
+            method: 'PUT',
+            credentials: 'include',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(body),
+        })
+            .then(response => response.json())
+            .then(result => {
+                console.log(result)
+            })
+    }
+
+    const deleteRequest = () =>{
+        fetch(`http://localhost:3000/api/requests/${props.item._id}`, {
+            method: 'DELETE',
+            credentials: 'include',
+            headers: {'Content-Type': 'application/json'},
+        })
+            .then(response => response.json())
+            .then(result => {
+                console.log(result)
+            })
+    }
 
     return (
         <div className={'list-item'}>
@@ -35,17 +80,19 @@ const RequestListItem = (props) => {
                         {group.description}
                     </Typography>
                 </CardContent>
+                <div className={'btns'}>
                 <CardActions>
                     {id === props.item.ownerID ?
                         (
                             <>
-                                <button> accept</button>
-                                <button> decline</button>
+                                <button className={'accept'} onClick={acceptRequest}> accept</button>
+                                <button className={'decline'} onClick={declineRequest}> decline</button>
                             </>
                         ) : (
-                            <button> cancel </button>)
+                            <button className={'cancel'} onClick={deleteRequest}> cancel </button>)
                     }
                 </CardActions>
+                </div>
             </Card>
         </div>
     )
