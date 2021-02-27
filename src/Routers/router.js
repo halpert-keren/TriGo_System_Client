@@ -10,6 +10,7 @@ import TrailPage from "../Components/trailPage/TrailPage";
 import TrailForm from "../Components/trailPage/NewTrailForm";
 import MyGroups from "../Components/account/MyGroups";
 import MyTrails from "../Components/account/SavedTrails";
+import Requests from "../Components/account/Requests";
 
 const ReactRouter = () => {
     return (
@@ -19,13 +20,13 @@ const ReactRouter = () => {
             <Route path='/account' component={HomePage}/>
             <Route path='/favorites' component={HomePage}/>
             <Route path='/mygroups' component={HomePage}/>
-            <Route path='/requests' component={HomePage}/>
             <Route path='/new-group' component={GroupForm}/>
             <Route path='/group' component={GroupPage}/>
             <Route path='/trail' component={TrailPage}/>
             <Route path='/new-trail' component={TrailForm}/>
             <Route path='/my-groups' component={MyGroups}/>
             <Route path='/saved-Trails' component={MyTrails}/>
+            <Route path='/requests' component={Requests}/>
             <Footer/>
         </>
     )
