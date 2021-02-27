@@ -10,6 +10,7 @@ import TrailPage from "../Components/trailPage/TrailPage";
 import TrailForm from "../Components/trailPage/NewTrailForm";
 import MyGroups from "../Components/account/MyGroups";
 import MyTrails from "../Components/account/SavedTrails";
+import Requests from "../Components/account/Requests";
 
 const ReactRouter = () => {
     return (

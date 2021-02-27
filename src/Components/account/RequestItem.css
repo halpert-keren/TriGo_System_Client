@@ -1,0 +1,13 @@
+.list-item {
+    margin-bottom: 1%;
+    width: 80%;
+    height: 100%;
+}
+.card{
+    width: 100%;
+}
+
+.card-img {
+    padding-top: 2px;
+    border-radius: 5px;
+}
