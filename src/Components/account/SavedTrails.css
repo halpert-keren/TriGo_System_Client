@@ -1,0 +1,27 @@
+.result-list {
+    display: flex;
+    position: relative;
+    justify-items: flex-start;
+}
+
+.result-list::-webkit-scrollbar {
+    width: 5px;
+}
+
+.result-list::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: none;
+    border-radius: 50px;
+}
+
+.my-trails{
+    width: 100%;
+    padding-top: 8%;
+    padding-bottom: 10%;
+    margin: 0 auto;
+}
+
+h2{
+    position: relative;
+    margin: 2%;
+}
