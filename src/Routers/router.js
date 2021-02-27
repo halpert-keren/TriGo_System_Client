@@ -8,6 +8,8 @@ import GroupForm from "../Components/groupPage/NewGroupForm";
 import GroupPage from "../Components/groupPage/GroupPage";
 import TrailPage from "../Components/trailPage/TrailPage";
 import TrailForm from "../Components/trailPage/NewTrailForm";
+import MyGroups from "../Components/account/MyGroups";
+import MyTrails from "../Components/account/SavedTrails";
 
 const ReactRouter = () => {
     return (
@@ -22,6 +24,8 @@ const ReactRouter = () => {
             <Route path='/group' component={GroupPage}/>
             <Route path='/trail' component={TrailPage}/>
             <Route path='/new-trail' component={TrailForm}/>
+            <Route path='/my-groups' component={MyGroups}/>
+            <Route path='/saved-Trails' component={MyTrails}/>
             <Footer/>
         </>
     )
