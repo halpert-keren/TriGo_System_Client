@@ -2,10 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter as Router} from 'react-router-dom';
 import ReactRouter from './Routers/router';
+import {CookiesProvider} from "react-cookie";
+import './index.css'
 
 ReactDOM.render(
-    <Router>
-        <ReactRouter/>
-    </Router>,
+    <CookiesProvider>
+        <Router>
+            <ReactRouter/>
+        </Router>
+    </CookiesProvider>,
     document.getElementById('root')
 );

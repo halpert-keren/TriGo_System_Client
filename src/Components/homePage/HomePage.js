@@ -3,6 +3,7 @@ import './HomePage.css'
 import NavBar from "./NavBar";
 import FilterPanel from "./FilterPanel";
 import ResultList from "./ResultList";
+import Header from "../shared/Header";
 
 const HomePage = (props) => {
     const [itemList, setItemList] = useState([]);
@@ -15,23 +16,23 @@ const HomePage = (props) => {
             headers: {'Content-Type': 'application/json'}
         })
             .then(response => response.json())
-            .then(result => {
-                setItemList(result)
-            })
+            .then(result => setItemList(result))
     }, [url])
 
     return (
-        <div className={'home-page'}>
-            <div className={'left-side'}>
-                <FilterPanel setUrl={setUrl}/>
+        <>
+            <Header/>
+            <div className={'home-page'}>
+                <div className={'left-side'}>
+                    <FilterPanel setUrl={setUrl}/>
+                </div>
+                <div className={'right-side'}>
+                    <NavBar/>
+                    <ResultList list={itemList}/>
+                </div>
             </div>
-            <div className={'right-side'}>
-                <NavBar/>
-                <ResultList list={itemList}/>
-            </div>
-        </div>
+        </>
     )
-
 }
 
 export default HomePage

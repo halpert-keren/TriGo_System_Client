@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import './MyGroups.css'
-import ListItem from "./ListItem";
+import ListItem from "../shared/ListItem";
+import Header from "../shared/Header";
 
 const id = '6002d4fe60075a2e14bfa282';
 const MyGroups = (props) => {
@@ -22,12 +23,15 @@ const MyGroups = (props) => {
     }
 
     return (
-        <div className={'my-groups'}>
-            <h2>My Groups</h2>
-            <div className={'result-list'}>
-            {groupList.map(eachItem)}
+        <>
+            <Header/>
+            <div className={'my-groups'}>
+                <h2>My Groups</h2>
+                <div className={'result-list'}>
+                    {groupList.map(eachItem)}
+                </div>
             </div>
-        </div>
+        </>
     )
 
 }

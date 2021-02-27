@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import './ResultList.css'
-import ListItem from "./ListItem";
+import ListItem from "../shared/ListItem";
 
 const ResultList = (props) => {
     const eachItem = (item, index) => {

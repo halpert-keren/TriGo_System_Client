@@ -8,7 +8,6 @@ import ExpandLess from '@material-ui/icons/ExpandLess';
 import ExpandMore from '@material-ui/icons/ExpandMore';
 import {Checkbox} from "@material-ui/core";
 
-
 const TrailFilterList = (props) => {
     const [openArea, setOpenArea] = useState(false);
     const [areaChecks, setAreaChecks] = useState({
