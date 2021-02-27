@@ -3,7 +3,6 @@ import './FilterPanel.css'
 import TrailFilterList from "./TrailFilterList";
 import GroupFilterList from "./GroupFilterList";
 
-
 const FilterPanel = (props) => {
     const [selected, setSelected] = useState('trails');
 
@@ -13,11 +12,17 @@ const FilterPanel = (props) => {
                 <h1>Search</h1>
                 <div>
                     <button className={selected === 'trails' ? 'selected' : ''}
-                            onClick={() => {setSelected('trails'); props.setUrl(`http://localhost:3000/api/trails/`)}}
+                            onClick={() => {
+                                setSelected('trails');
+                                props.setUrl(`http://localhost:3000/api/trails/`)
+                            }}
                     >Trails
                     </button>
                     <button className={selected === 'groups' ? 'selected' : ''}
-                            onClick={() => {setSelected('groups'); props.setUrl(`http://localhost:3000/api/groups/`)}}
+                            onClick={() => {
+                                setSelected('groups');
+                                props.setUrl(`http://localhost:3000/api/groups/`)
+                            }}
                     >Groups
                     </button>
                 </div>
@@ -26,7 +31,8 @@ const FilterPanel = (props) => {
                 <input type={'search'}/>
             </div>
             <div className={'filters'}>
-                {selected === 'trails' ? <TrailFilterList setUrl={props.setUrl}/> : <GroupFilterList setUrl={props.setUrl}/>}
+                {selected === 'trails' ? <TrailFilterList setUrl={props.setUrl}/> :
+                    <GroupFilterList setUrl={props.setUrl}/>}
             </div>
             <div className={'bottom-panel'}>
                 <button>Search</button>
