@@ -29,7 +29,7 @@ const HomePage = (props) => {
                 </div>
                 <div className={'right-side'}>
                     <NavBar/>
-                    <ResultList list={itemList} path={ selected === 'trails' ? '/trail': '/group'}/>
+                    <ResultList type={selected} list={itemList} path={ selected === 'trails' ? '/trail': '/group'}/>
                 </div>
             </div>
         </>

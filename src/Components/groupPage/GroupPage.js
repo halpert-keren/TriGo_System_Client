@@ -10,7 +10,7 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
 import Header from "../shared/Header";
 import {useHistory} from "react-router-dom";
-import {IconButton} from "@material-ui/core";
+import {IconButton, Modal} from "@material-ui/core";
 import {useCookies} from "react-cookie";
 
 const GroupPage = (props) => {
@@ -19,6 +19,7 @@ const GroupPage = (props) => {
     const [group, setGroup] = useState({});
     const [trail, setTrail] = useState({});
     const [images, setImages] = useState(null);
+    const [open, setOpen] = React.useState(false);
 
     useEffect(() => {
         fetch(`http://localhost:3000/api/groups/${props.location.data}`, {
@@ -64,8 +65,17 @@ const GroupPage = (props) => {
             })
     }
 
+    const requestModal = (
+        <Modal disableAutoFocus disableEnforceFocus className={'request-alert'} open={open} onClose={()=>setOpen(false)}>
+            <div className={'modal'}>
+                <p> Your request has been sent! </p>
+            </div>
+        </Modal>
+    )
+
     return (
         <>
+            {requestModal}
             <Header/>
             <div className={'group-page'}>
                 <div className={'page-info'}>
@@ -96,7 +106,7 @@ const GroupPage = (props) => {
                     <div className={'info-item'}>
                         <p>{group.description}</p>
                     </div>
-                    <button className={'success'} onClick={joinGroup}>Join</button>
+                    <button className={'success'} onClick={()=>setOpen(true)}>Join</button>
                 </div>
                 <div className={'group-page-img'}>
                     <ImageGallery showPlayButton={false} showNav={false} autoPlay={true}
