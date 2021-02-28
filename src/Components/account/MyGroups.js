@@ -29,7 +29,8 @@ const MyGroups = (props) => {
         })
             .then(response => response.json())
             .then(result => {
-                return (<ListItem key={index} item={item} path={'/group'} images={result.images}/>)
+                console.log(result)
+                return (<ListItem type={'group'} key={index} item={item} path={'/group'} images={result.images}/>)
             })
     }
 

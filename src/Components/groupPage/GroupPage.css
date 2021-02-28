@@ -5,6 +5,26 @@
     flex-wrap: wrap;
 }
 
+.request-alert {
+    margin: auto auto;
+    width: 20%;
+    height: 10%;
+}
+
+.request-alert .modal {
+    background-color: #D8E8CE;
+    color: #213B14;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.request-alert p {
+    text-align: center;
+}
+
 .group-page .group-page-img{
     position: absolute;
     right: 0;

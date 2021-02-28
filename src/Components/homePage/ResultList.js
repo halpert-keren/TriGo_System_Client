@@ -1,11 +1,11 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import './ResultList.css'
 import ListItem from "../shared/ListItem";
 
 const ResultList = (props) => {
     const eachItem = (item, index) => {
         let images = []
-        if(item.images) {
+        if(props.type === 'trail') {
             images = item.images
         } else {
             fetch(`http://localhost:3000/api/trails/${item.trail}`, {
@@ -13,9 +13,9 @@ const ResultList = (props) => {
                 headers: {'Content-Type': 'application/json'}
             })
                 .then(response => response.json())
-                .then(result => {images = result.images})
+                .then(result => <ListItem type={props.type}  key={index} item={item} path={props.path} images={result.images}/>)
         }
-        return (<ListItem key={index} item={item} path={props.path} images={images}/>)
+        return (<ListItem type={props.type} key={index} item={item} path={props.path} images={images}/>)
     }
     
     return (

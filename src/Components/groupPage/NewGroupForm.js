@@ -27,14 +27,32 @@ const GroupForm = (props) => {
         })
             .then(response => response.json())
             .then(result => {
-                result.forEach(user => setEmailList(prevArray => [...prevArray, {title: user['email']}]))
+                result.forEach(user => setEmailList(prevArray => [...prevArray, user['email']]))
             })
     }, [])
 
-    const addNewGroup = () => {
-        if(inviteUser[inviteUser.length-1]==='')
+    const getUserIDs = () => {
+        let users = []
+        let i = 0
+        const promise = new Promise((resolve, reject) => {
+            inviteUser.forEach((user, index)=>{
+               users.push(user)
+            })
+            if (i === inviteUser.length-1)
+                resolve()
+        })
+        promise.then(() => {
+            console.log(users)
+            addNewGroup(users)
+            // return users
+        })
+    }
+
+    const addNewGroup = (users) => {
+        // תביא את הID של כל המשתמשים שמופיעים ברשימת הINVITEUSER בכל אינפוט
+        if (inviteUser[inviteUser.length - 1] === '')
             inviteUser.pop()
-        inviteUser.unshift(cookies.user.googleID)
+        inviteUser.unshift(cookies.user.email)
         const body = {
             name: groupName,
             trail: props.location.data,
@@ -104,17 +122,15 @@ const GroupForm = (props) => {
                             return (
                                 <div key={index} className={'input-grp'}>
                                     <label>Invite User</label>
-
-
                                         <Autocomplete
                                             style={{width: '100%', paddingTop: '5%'}}
-                                            options={emailList} getOptionLabel={(emailList) => emailList.title} value={item}
-                                            onChange={e => {
+                                            options={emailList} getOptionLabel={(emailList) => emailList} value={inviteUser[index]}
+                                            onChange={(e, newVal) => {
                                                 const list = [...inviteUser];
-                                                list[index] = e.target.value;
+                                                list[index] = newVal;
                                                 setInviteUser(list)
                                             }}
-                                            renderInput={(params) => <TextField {...params} label=" "/>}/>
+                                            renderInput={(params) => <TextField variant={'outlined'} {...params} label=" "/>}/>
 
 
 
@@ -140,7 +156,7 @@ const GroupForm = (props) => {
                                       onChange={e => setDescription(e.target.value)}/>
                         </div>
                         <div className={'form-btns'}>
-                            <button className={'success'} onClick={addNewGroup}>Create</button>
+                            <button className={'success'} onClick={getUserIDs}>Create</button>
                             <button className={'failure'} onClick={() => history.goBack()}>Cancel</button>
                         </div>
                     </div>

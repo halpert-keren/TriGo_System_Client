@@ -34,7 +34,7 @@ const MyTrails = (props) => {
     }, [])
 
     const eachItem = (item, index) => {
-        return (<ListItem key={index} item={item} path={'/trail'} images={item.images}/>)
+        return (<ListItem type={'trail'} key={index} item={item} path={'/trail'} images={item.images}/>)
     }
 
     const backHistory = useHistory();
