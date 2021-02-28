@@ -5,6 +5,7 @@ import {IconButton} from "@material-ui/core";
 import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import Header from "../shared/Header";
 import {useCookies} from "react-cookie";
+import ArrowBackRoundedIcon from "@material-ui/icons/ArrowBackRounded";
 
 const TrailForm = (props) => {
     let history = useHistory()
@@ -17,16 +18,19 @@ const TrailForm = (props) => {
     const [accessibility, setAccessibility] = useState('');
     const [timeOfDay, setTimeOfDay] = useState('');
     const [lengthOfTime, setLengthOfTime] = useState('');
+    const [equipments, setEquipment] = useState(['']);
     const [picnicArea, setPicnicArea] = useState(false);
     const [photos, setPhotos] = useState(['']);
     const [description, setDescription] = useState('');
     const [cookies, setCookie] = useCookies(['user']);
 
     const addNewTrail = () => {
-        if(locations[locations.length-1]==='')
+        if (locations[locations.length - 1] === '')
             locations.pop()
-        if(photos[photos.length-1]==='')
+        if (photos[photos.length - 1] === '')
             photos.pop()
+        if (equipments[equipments.length - 1] === '')
+            equipments.pop()
         const body = {
             name: trailName,
             location: locations,
@@ -36,6 +40,7 @@ const TrailForm = (props) => {
             accessibility: accessibility,
             timeOfDay: timeOfDay,
             lengthOfTime: lengthOfTime,
+            equipment: equipments,
             picnicArea: picnicArea,
             images: photos,
             description: description
@@ -69,11 +74,17 @@ const TrailForm = (props) => {
             })
     }
 
+    const goBack = () =>{
+        history.push(`/home`);
+    }
 
     return (
         <>
             <Header/>
             <div className={'form-page'}>
+                <IconButton className={'go-back'} onClick={goBack}>
+                    <ArrowBackRoundedIcon fontSize={'large'}/>
+                </IconButton>
                 <div className={'form'}>
                     <div className={'form-left'}>
                         <div className={'input-grp inp'}>
@@ -171,6 +182,29 @@ const TrailForm = (props) => {
                                 <option value="More-than-10-hours">More than 10 hours</option>
                             </select>
                         </div>
+                        {equipments.map((item, index) => {
+                            return (
+                        <div className={'input-grp'}>
+                            <label>Equipment</label>
+                            <select name="Equipment" value={item}
+                                    onChange={e => {
+                                        const list = [...equipments];
+                                        list[index] = e.target.value;
+                                        setEquipment(list)
+                                    }}>}
+                                <option value="">Select</option>
+                                <option value="'water'">water</option>
+                                <option value="chairs">chairs</option>
+                                <option value="hats">hats</option>
+                                <option value="hiking boots">hiking boots</option>
+                                <option value="coat">coat</option>
+                            </select>
+                            <IconButton onClick={() => setEquipment(oldArray => [...oldArray, ''])}>
+                                <AddRoundedIcon style={{color: '#213C14'}}/>
+                            </IconButton>
+                        </div>
+                            )
+                        })}
                         <div className={'input-grp'}>
                             <label>Picnic Area</label>
                             <select name="PicnicArea" value={picnicArea}
