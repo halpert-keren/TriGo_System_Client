@@ -7,13 +7,13 @@
 }
 
 .trail-page .trail-page-img{
-    display: flex;
-    justify-content: center;
-    /*position: absolute;*/
-    /*width: 70%;*/
-    /*left: 30%;*/
-    /*top: 0px;*/
-    object-fit: cover;
+    /*display: flex;*/
+    /*justify-content: center;*/
+    position: absolute;
+    right: 0;
+    left: 30%;
+    top: 8%;
+    /*object-fit: cover;*/
 }
 
 .page-info {

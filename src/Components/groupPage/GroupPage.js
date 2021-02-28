@@ -11,8 +11,10 @@ import ImageGallery from "react-image-gallery";
 import Header from "../shared/Header";
 import {useHistory} from "react-router-dom";
 import {IconButton} from "@material-ui/core";
+import {useCookies} from "react-cookie";
 
 const GroupPage = (props) => {
+    const [cookies] = useCookies(['user']);
     let history = useHistory()
     const [group, setGroup] = useState({});
     // const [trail, setTrail] = useState({});
@@ -42,7 +44,21 @@ const GroupPage = (props) => {
 
 
     const joinGroup = () => {
-
+        const body = {
+            groupID: group._id,
+            requesterID: cookies.user.googleID,
+        }
+        console.log(body)
+        fetch(`http://localhost:3000/api/requests/`, {
+            method: 'POST',
+            credentials: 'include',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(body),
+        })
+            .then(response => response.json())
+            .then(result => {
+                console.log(result)
+            })
     }
 
     return (

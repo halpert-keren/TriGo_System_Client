@@ -24,11 +24,11 @@ const RequestListItem = (props) => {
     }, [])
 
     const acceptRequest = () =>{
-        const body = {
-            status : 'approved'
+        //send mail about accept
+        const body={
+            users: props.item.requesterID
         }
-
-        fetch(`http://localhost:3000/api/requests/${props.item._id}`, {
+        fetch(`http://localhost:3000/api/groups/${props.item.groupID}`, {
             method: 'PUT',
             credentials: 'include',
             headers: {'Content-Type': 'application/json'},
@@ -36,23 +36,29 @@ const RequestListItem = (props) => {
         })
             .then(response => response.json())
             .then(result => {
-                console.log(result)
+                fetch(`http://localhost:3000/api/requests/${props.item._id}`, {
+                    method: 'DELETE',
+                    credentials: 'include',
+                    headers: {'Content-Type': 'application/json'},
+                })
+                    .then(response => response.json())
+                    .then(result => {
+                        props.update()
+                        console.log(result)
+                    })
             })
     }
 
     const declineRequest = () =>{
-        const body = {
-            status : 'declined'
-        }
-
+        //send mail about decline
         fetch(`http://localhost:3000/api/requests/${props.item._id}`, {
-            method: 'PUT',
+            method: 'DELETE',
             credentials: 'include',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(body),
         })
             .then(response => response.json())
             .then(result => {
+                props.update()
                 console.log(result)
             })
     }
@@ -65,6 +71,7 @@ const RequestListItem = (props) => {
         })
             .then(response => response.json())
             .then(result => {
+                props.update()
                 console.log(result)
             })
     }
