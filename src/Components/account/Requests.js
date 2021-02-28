@@ -1,13 +1,15 @@
 import React, {useState, useEffect} from "react";
 import './Requests.css'
 import RequestListItem from "./RequestItem";
+import {useCookies} from "react-cookie";
+import Header from "../shared/Header";
 
-const id = '6002d4fe60075a2e14bfa282';
 const Requests = (props) => {
     const [requestsList, setRequestsList] = useState([]);
+    const [cookies] = useCookies(['user']);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/requests/?userID=${id}`, {
+        fetch(`http://localhost:3000/api/requests/?userID=${cookies.user.googleID}`, {
             credentials: 'include',
             headers: {'Content-Type': 'application/json'}
         })
@@ -22,12 +24,15 @@ const Requests = (props) => {
     }
 
     return (
-        <div className={'my-requests'}>
-            <h2>My Requests</h2>
-            <div className={'R-result-list'}>
-                {requestsList.map(eachItem)}
+        <>
+            <Header/>
+            <div className={'my-requests'}>
+                <h2>My Requests</h2>
+                <div className={'R-result-list'}>
+                    {requestsList.map(eachItem)}
+                </div>
             </div>
-        </div>
+        </>
     )
 
 }

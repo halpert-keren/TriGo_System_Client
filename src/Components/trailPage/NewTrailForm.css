@@ -77,6 +77,13 @@
     padding-right: 3%;
 }
 
+.form-page label span {
+    color: #BA0A0A;
+    font-weight: 700;
+    font-size: 120%;
+    padding-right: 2px;
+}
+
 .form-page .invite-user button {
     padding: 0;
 }

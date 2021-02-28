@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import './MyGroups.css'
-import AccountListItem from "../account/AccountListItem";
+import ListItem from "../shared/ListItem";
 import Header from "../shared/Header";
 import {useCookies} from "react-cookie";
 
@@ -20,7 +20,14 @@ const MyGroups = (props) => {
     }, [])
 
     const eachItem = (item, index) => {
-        return (<AccountListItem key={index} item={item} path={'/group'}/>)
+        fetch(`http://localhost:3000/api/trails/${item.trail}`, {
+            credentials: 'include',
+            headers: {'Content-Type': 'application/json'}
+        })
+            .then(response => response.json())
+            .then(result => {
+                return (<ListItem key={index} item={item} path={'/group'} images={result.images}/>)
+            })
     }
 
     return (

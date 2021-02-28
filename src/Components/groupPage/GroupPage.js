@@ -5,14 +5,14 @@ import TodayRoundedIcon from '@material-ui/icons/TodayRounded';
 import ScheduleRoundedIcon from '@material-ui/icons/ScheduleRounded';
 import LockRoundedIcon from '@material-ui/icons/LockRounded';
 import GroupRoundedIcon from '@material-ui/icons/GroupRounded';
-import ArrowBackRoundedIcon from "@material-ui/icons/ArrowBackRounded";
+import "react-image-gallery/styles/css/image-gallery.css";
+import ImageGallery from "react-image-gallery";
 import Header from "../shared/Header";
-import {IconButton} from "@material-ui/core";
-import {useHistory} from "react-router-dom";
 
 const GroupPage = (props) => {
-    let history = useHistory()
     const [group, setGroup] = useState({});
+    // const [trail, setTrail] = useState({});
+    const [images, setImages] = useState(null);
 
     useEffect(() => {
         fetch(`http://localhost:3000/api/groups/${props.location.data}`, {
@@ -20,35 +20,32 @@ const GroupPage = (props) => {
             headers: {'Content-Type': 'application/json'}
         })
             .then(response => response.json())
-            .then(result => {
-                console.log(result)
-                setGroup(result)
-            })
-    }, [])
+            .then(result => setGroup(result))
+    }, [props.location.data])
 
-    const JoinGroup = () => {
-        // const [request, setRequest] = useState({});
-        //
-        // useEffect(() => {
-        //     fetch(`http://localhost:3000/api/groups/${props.location.data}`, {
-        //         credentials: 'include',
-        //         headers: {'Content-Type': 'application/json'}
-        //     })
-        //         .then(response => response.json())
-        //         .then(result => {
-        //             console.log(result)
-        //             setGroup(result)
-        //         })
-        // }, [])
+
+    useEffect(() => {
+        fetch(`http://localhost:3000/api/trails/${group.trail}`, {
+            credentials: 'include',
+            headers: {'Content-Type': 'application/json'}
+        })
+            .then(response => response.json())
+            .then(result => {
+                console.log(result.images)
+                setImages(result.images.map(url => ({original: `${url}`})))
+            })
+    }, [group])
+
+
+    const joinGroup = () => {
+
     }
 
     return (
         <>
             <Header/>
             <div className={'group-page'}>
-                <div className={'page-info'}>
-                    <IconButton className={'go-back'} onClick={() => history.goBack()}>
-                        <ArrowBackRoundedIcon fontSize={'large'}/></IconButton>
+                <div className={'group-page-info'}>
                     <h1>{group.name}</h1>
                     <div className={'info-item'}>
                         <LocationOnRoundedIcon fontSize={'large'}/>
@@ -73,11 +70,13 @@ const GroupPage = (props) => {
                     <div className={'info-item'}>
                         <p>{group.description}</p>
                     </div>
-                    <button className={'join-group'} onClick={JoinGroup}>Join</button>
+                    <button className={'success'} onClick={joinGroup}>Join</button>
                 </div>
                 <div className={'group-page-img'}>
-                    <img alt={`${group.name}`}
-                         src={'https://bstatic.com/xdata/images/xphoto/1182x887/82877075.jpg?k=db9e00135b7b8f038aad88a7676235667ca249a5eed997a499677812fa332833&o=?size=S'}/>
+                    <ImageGallery showPlayButton={false} showNav={false} autoPlay={true}
+                                  showFullscreenButton={false} showThumbnails={false} items={images? images:[{original:'https://breakthrough.org/wp-content/uploads/2018/10/default-placeholder-image.png'}]}/>
+                    {/*<img alt={`${group.name}`}*/}
+                    {/*     src={'https://bstatic.com/xdata/images/xphoto/1182x887/82877075.jpg?k=db9e00135b7b8f038aad88a7676235667ca249a5eed997a499677812fa332833&o=?size=S'}/>*/}
                 </div>
             </div>
         </>

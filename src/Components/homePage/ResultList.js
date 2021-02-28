@@ -4,7 +4,18 @@ import ListItem from "../shared/ListItem";
 
 const ResultList = (props) => {
     const eachItem = (item, index) => {
-        return (<ListItem key={index} item={item} path={props.path}/>)
+        let images = []
+        if(item.images) {
+            images = item.images
+        } else {
+            fetch(`http://localhost:3000/api/trails/${item.trail}`, {
+                credentials: 'include',
+                headers: {'Content-Type': 'application/json'}
+            })
+                .then(response => response.json())
+                .then(result => {images = result.images})
+        }
+        return (<ListItem key={index} item={item} path={props.path} images={images}/>)
     }
     
     return (
