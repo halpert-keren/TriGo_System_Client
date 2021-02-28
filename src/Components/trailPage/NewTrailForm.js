@@ -4,10 +4,14 @@ import {useHistory} from "react-router-dom";
 import {IconButton} from "@material-ui/core";
 import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import Header from "../shared/Header";
+import ArrowBackRoundedIcon from '@material-ui/icons/ArrowBackRounded';
+import {useCookies} from "react-cookie";
 
 const TrailForm = (props) => {
     let history = useHistory()
 
+    const [cookies] = useCookies(['user']);
+    const [user, setUser] = useState();
     const [trailName, setTrailName] = useState('');
     const [location, setLocation] = useState([{location: ''}]);
     const [area, setArea] = useState('');
@@ -21,6 +25,8 @@ const TrailForm = (props) => {
     const [description, setDescription] = useState('');
 
     const addNewTrail = () => {
+        // setUser.unshift(cookies.user.googleID)
+        // console.log(user)
         const body = {
             name: trailName,
             location: location,
@@ -51,10 +57,18 @@ const TrailForm = (props) => {
 
     }
 
+    const backHistory = useHistory();
+    const goBack = () =>{
+        let path = `/home`;
+        backHistory.push(path);
+    }
+
     return (
         <>
             <Header/>
             <div className={'form-page'}>
+                <IconButton className={'go-back'} onClick={goBack}>
+                    <ArrowBackRoundedIcon fontSize={'large'}/></IconButton>
                 <div className={'form'}>
                     <div className={'form-left'}>
                         <div className={'input-grp'}>

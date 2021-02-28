@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import './SavedTrails.css'
-import ListItem from "../shared/ListItem";
+import AccountListItem from "../account/AccountListItem";
 import Header from "../shared/Header";
 import {useCookies} from "react-cookie";
 
@@ -31,7 +31,7 @@ const MyTrails = (props) => {
     }, [])
 
     const eachItem = (item, index) => {
-        return (<ListItem key={index} item={item} path={'/trail'}/>)
+        return (<AccountListItem key={index} item={item} path={'/trail'}/>)
     }
 
     return (

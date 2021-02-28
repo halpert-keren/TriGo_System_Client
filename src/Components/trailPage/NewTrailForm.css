@@ -21,7 +21,7 @@
     position: relative;
     justify-content: space-around;
     left: 20%;
-    top: 20%;
+    top: 40px;
 }
 
 .form-page .form-btns button {
@@ -93,12 +93,12 @@
 .form-page textarea{
     resize: none;
 }
-.photo{
+.form-page .photo{
     margin-top: 1%;
     margin-bottom: 6%;
 }
 
-.upload{
+.form-page .upload{
     position: absolute;
     border: none;
     padding: 1% 2%;

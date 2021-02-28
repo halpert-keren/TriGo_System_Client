@@ -7,11 +7,11 @@
     display: flex;
 }
 
-.right-side {
+.home-page .right-side {
     width: 70%;
 }
 
-.left-side {
+.home-page .left-side {
     width: 30%;
 }
 

@@ -1,7 +1,7 @@
 .group-page {
     width: 100%;
     height: 100%;
-    position: absolute;
+    /*position: absolute;*/
     flex-wrap: wrap;
 }
 
@@ -15,34 +15,29 @@
     top: 0;
 }
 
-.group-page .group-page-info {
-    color: #213C14;
-}
 
-.group-page-info .info-item {
+.page-info .info-item {
     display: flex;
     align-items: center;
-    margin:2%;
 }
 
-.info-item p {
+.page-info .info-item p {
     font-size: 120%;
 }
 
-.info-item h3 {
+.page-info .info-item h3 {
     display: flex;
-    margin-left: 3%;
     font-size: 120%;
     font-weight: normal;
 }
 
-.group-page-info h1 {
+.page-info h1 {
     position: relative;
     margin: 2%;
 }
 
-.group-page-info button {
-    position: absolute;
+.join-group{
+    position: relative;
     border: none;
     margin-left: 2%;
     padding: 1% 4%;
@@ -50,4 +45,11 @@
     border-radius: 5px;
     color: #D8E8CE;
     background-color: #396822;
+}
+
+.page-info.go-back{
+    border: none;
+    padding: 2px 2px;
+    font-size: 100%;
+    border-radius: 5px;
 }
