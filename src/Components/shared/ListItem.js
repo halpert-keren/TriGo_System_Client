@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import './ListItem.css'
-import image from './imagePlaceholder.png'
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -10,14 +9,6 @@ import {useHistory} from "react-router-dom";
 
 const ListItem = (props) => {
     let history = useHistory();
-    const [images, setImages] = useState(image);
-
-    useEffect(() => {
-        console.log(props.item)
-        if ( props.type ==='trail' )
-            if(props.item.images)
-                setImages(props.item.images[0])
-    }, [props.item, props.type])
 
     const itemAction = () => {
         history.push({
@@ -38,9 +29,9 @@ const ListItem = (props) => {
                             {props.item.description}
                         </Typography>
                     </CardContent>
-                    <CardMedia className={'card-img'}
+                     <CardMedia className={'card-img'}
                                component="img"
-                               image={images}
+                               image={props.images && props.images[0] ? props.images[0] : 'https://breakthrough.org/wp-content/uploads/2018/10/default-placeholder-image.png'}
                                title="image of trail"
                     />
                 </CardActionArea>

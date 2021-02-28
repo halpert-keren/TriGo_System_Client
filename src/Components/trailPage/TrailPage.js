@@ -142,9 +142,8 @@ const TrailPage = (props) => {
                     </div>
                     <div className={'info-item'}>
                         <LocalMallRoundedIcon fontSize={'large'}/>
-                        <h3>{trail['equipment'] ?
-                            (trail['equipment'].map((item, i) => <span key={i}>{`${item} /`}</span>))
-                            : 'no info'}
+                        <h3>{trail['equipment'] && trail['equipment'].length ?
+                            (trail['equipment'].map((item, i) => <span key={i}>{`/${item}`}</span>)) : 'no info'}
                         </h3>
                     </div>
                     <div className={'info-item'}>
