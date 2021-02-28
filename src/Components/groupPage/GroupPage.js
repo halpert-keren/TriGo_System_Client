@@ -5,11 +5,15 @@ import TodayRoundedIcon from '@material-ui/icons/TodayRounded';
 import ScheduleRoundedIcon from '@material-ui/icons/ScheduleRounded';
 import LockRoundedIcon from '@material-ui/icons/LockRounded';
 import GroupRoundedIcon from '@material-ui/icons/GroupRounded';
+import ArrowBackRoundedIcon from "@material-ui/icons/ArrowBackRounded";
 import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
 import Header from "../shared/Header";
+import {useHistory} from "react-router-dom";
+import {IconButton} from "@material-ui/core";
 
 const GroupPage = (props) => {
+    let history = useHistory()
     const [group, setGroup] = useState({});
     // const [trail, setTrail] = useState({});
     const [images, setImages] = useState(null);
@@ -45,7 +49,10 @@ const GroupPage = (props) => {
         <>
             <Header/>
             <div className={'group-page'}>
-                <div className={'group-page-info'}>
+                <div className={'page-info'}>
+                    <IconButton className={'go-back'} onClick={() => history.goBack()}>
+                        <ArrowBackRoundedIcon fontSize={'large'}/>
+                    </IconButton>
                     <h1>{group.name}</h1>
                     <div className={'info-item'}>
                         <LocationOnRoundedIcon fontSize={'large'}/>

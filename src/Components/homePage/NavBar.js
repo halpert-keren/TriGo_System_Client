@@ -6,7 +6,6 @@ const NavBar = (props) => {
     return (
         <div className={'navbar'}>
             <NavLink to={'/new-trail'}>Create Trail</NavLink>
-            <NavLink to={'/new-group'}>Create Group</NavLink>
         </div>
     )
 

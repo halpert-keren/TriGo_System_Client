@@ -97,7 +97,8 @@ const TrailPage = (props) => {
             <div className={'trail-page'}>
                 <div className={'page-info'}>
                     <IconButton className={'go-back'} onClick={() => history.goBack()}>
-                        <ArrowBackRoundedIcon fontSize={'large'}/></IconButton>
+                        <ArrowBackRoundedIcon fontSize={'large'}/>
+                    </IconButton>
                     <div className={'favorite'}>
                         <h1>{trail.name}</h1>
                         <IconButton onClick={addToFavorite}>

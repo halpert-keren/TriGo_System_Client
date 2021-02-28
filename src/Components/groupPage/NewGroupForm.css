@@ -15,14 +15,6 @@
     position: absolute;
 }
 
-/*.form-page .form-btns {*/
-/*    display: flex;*/
-/*    position: relative;*/
-/*    justify-content: space-around;*/
-/*    left: 20%;*/
-/*    top: 20%;*/
-/*}*/
-
 .form-page .form-btns button {
     border: none;
     padding: 1% 2%;
@@ -97,6 +89,5 @@
     padding: 1% 2%;
     font-size: 100%;
     border-radius: 5px;
-    /*background-color: #D8E8CE;*/
     margin-right: 20px;
 }
