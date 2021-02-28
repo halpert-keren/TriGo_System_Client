@@ -11,8 +11,6 @@ const ListItem = (props) => {
     let history = useHistory();
 
     const itemAction = () => {
-        console.log('path: ')
-        console.log(props.path)
         history.push({
             pathname: props.path,
             data: props.item._id

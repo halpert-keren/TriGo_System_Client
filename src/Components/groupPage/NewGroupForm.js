@@ -1,7 +1,8 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import './NewGroupForm.css'
 import {useHistory} from "react-router-dom";
-import {IconButton} from "@material-ui/core";
+import {IconButton, TextField} from "@material-ui/core";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import Header from "../shared/Header";
 import {useCookies} from "react-cookie";
@@ -12,12 +13,23 @@ const GroupForm = (props) => {
 
     const [cookies] = useCookies(['user']);
     const [groupName, setGroupName] = useState('');
-    const [trailName, setTrailName] = useState('');
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
     const [privacy, setPrivacy] = useState('No');
     const [inviteUser, setInviteUser] = useState(['']);
     const [description, setDescription] = useState('');
+    const [emailList, setEmailList] = useState([]);
+
+    useEffect(() => {
+        fetch(`http://localhost:3000/api/users`, {
+            credentials: 'include',
+            headers: {'Content-Type': 'application/json',}
+        })
+            .then(response => response.json())
+            .then(result => {
+                result.forEach(user => setEmailList(prevArray => [...prevArray, {title: user['email']}]))
+            })
+    }, [])
 
     const addNewGroup = () => {
         if(inviteUser[inviteUser.length-1]==='')
@@ -25,7 +37,7 @@ const GroupForm = (props) => {
         inviteUser.unshift(cookies.user.googleID)
         const body = {
             name: groupName,
-            // trail: trailName,
+            trail: props.location.data,
             date: date,
             time: time,
             privacy: privacy,
@@ -42,15 +54,12 @@ const GroupForm = (props) => {
             .then(response => response.json())
             .then(result => {
                 console.log(result)
-                history.push('/')
+                history.push('/home')
             })
     }
 
-
-    const backHistory = useHistory();
     const goBack = () =>{
-        let path = `/home`;
-        backHistory.push(path);
+        history.push(`/home`);
     }
 
 
@@ -63,7 +72,7 @@ const GroupForm = (props) => {
                 </IconButton>
                 <div className={'form'}>
                     <div className={'form-left'}>
-                        <div className={'input-grp'}>
+                        <div className={'input-grp inp'}>
                             <label>Group Name</label>
                             <input required name="Group Name" value={groupName}
                                    onChange={e => setGroupName(e.target.value)}/>
@@ -73,12 +82,12 @@ const GroupForm = (props) => {
                         {/*    <input required name="Trail Name" value={trailName}*/}
                         {/*           onChange={e => setTrailName(e.target.value)}/>*/}
                         {/*</div>*/}
-                        <div className={'input-grp'}>
+                        <div className={'input-grp inp'}>
                             <label>Date</label>
                             <input type={'date'} name="Date" value={date}
                                    onChange={e => setDate(e.target.value)}/>
                         </div>
-                        <div className={'input-grp'}>
+                        <div className={'input-grp inp'}>
                             <label>Time</label>
                             <input type={'time'} name="Time" value={time}
                                    onChange={e => setTime(e.target.value)}/>
@@ -95,12 +104,28 @@ const GroupForm = (props) => {
                             return (
                                 <div key={index} className={'input-grp'}>
                                     <label>Invite User</label>
-                                    <input name="Invite User" value={item}
-                                           onChange={e => {
-                                               const list = [...inviteUser];
-                                               list[index] = e.target.value;
-                                               setInviteUser(list)
-                                           }}/>
+
+
+                                        <Autocomplete
+                                            style={{width: '100%', paddingTop: '5%'}}
+                                            options={emailList} getOptionLabel={(emailList) => emailList.title} value={item}
+                                            onChange={e => {
+                                                const list = [...inviteUser];
+                                                list[index] = e.target.value;
+                                                setInviteUser(list)
+                                            }}
+                                            renderInput={(params) => <TextField {...params} label=" "/>}/>
+
+
+
+
+
+                                    {/*<input name="Invite User" value={item}*/}
+                                    {/*       onChange={e => {*/}
+                                    {/*           const list = [...inviteUser];*/}
+                                    {/*           list[index] = e.target.value;*/}
+                                    {/*           setInviteUser(list)*/}
+                                    {/*       }}/>*/}
                                     <IconButton onClick={() => setInviteUser(oldArray => [...oldArray, ''])}>
                                         <AddRoundedIcon style={{color: '#213C14'}}/>
                                     </IconButton>

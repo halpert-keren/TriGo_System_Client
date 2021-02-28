@@ -76,14 +76,14 @@ const TrailForm = (props) => {
             <div className={'form-page'}>
                 <div className={'form'}>
                     <div className={'form-left'}>
-                        <div className={'input-grp'}>
+                        <div className={'input-grp inp'}>
                             <label><span>*</span>Trail Name</label>
                             <input required name="Trail Name" value={trailName}
                                    onChange={e => setTrailName(e.target.value)}/>
                         </div>
                         {locations.map((item, index) => {
                             return (
-                                <div key={index} className={'input-grp'}>
+                                <div key={index} className={'input-grp inp'}>
                                     <label><span>*</span>Location</label>
                                     <input required name="Location" value={item}
                                            onChange={e => {
