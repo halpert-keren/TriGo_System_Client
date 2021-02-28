@@ -114,23 +114,23 @@ const TrailPage = (props) => {
                     </div>
                     <div className={'info-item'}>
                         <LinearScaleRoundedIcon fontSize={'large'}/>
-                        <h3>{trail.length}</h3>
+                        <h3>{trail['length'] ? trail['length'].replaceAll('-', ' ') : 'no info'}</h3>
                     </div>
                     <div className={'info-item'}>
                         <EmojiFlagsRoundedIcon fontSize={'large'}/>
-                        <h3>{trail.area ? trail.area : 'no info'}</h3>
+                        <h3>{trail['area'] ? trail['area'].replaceAll('-', ' ') : 'no info'}</h3>
                     </div>
                     <div className={'info-item'}>
                         <FitnessCenterRoundedIcon fontSize={'large'}/>
-                        <h3>{trail.difficulty}</h3>
+                        <h3>{trail['difficulty']? trail['difficulty'].replaceAll('-', ' ') : 'no info'}</h3>
                     </div>
                     <div className={'info-item'}>
                         <AccessibleRoundedIcon fontSize={'large'}/>
-                        <h3>{trail.accessibility ? trail.accessibility : 'no info'}</h3>
+                        <h3>{trail['accessibility'] ? trail['accessibility'].replaceAll('-', ' ') : 'no info'}</h3>
                     </div>
                     <div className={'info-item'}>
                         <Brightness4RoundedIcon fontSize={'large'}/>
-                        <h3>{trail.timeOfDay ? trail.timeOfDay : 'no info'}</h3>
+                        <h3>{trail['timeOfDay'] ? trail['timeOfDay'].replaceAll('-', ' ') : 'no info'}</h3>
                     </div>
                     <div className={'info-item'}>
                         <RestaurantRoundedIcon fontSize={'large'}/>
@@ -138,12 +138,14 @@ const TrailPage = (props) => {
                     </div>
                     <div className={'info-item'}>
                         <ScheduleRoundedIcon fontSize={'large'}/>
-                        <h3>{trail.lengthOfTime}</h3>
+                        <h3>{trail['lengthOfTime']? trail['lengthOfTime'].replaceAll('-', ' ') : 'no info'}</h3>
                     </div>
                     <div className={'info-item'}>
                         <LocalMallRoundedIcon fontSize={'large'}/>
-                        <h3>{trail.equipment === undefined ? 'no info' : (trail.equipment.map((item, i) => <span
-                            key={i}>{item}{' /'}</span>))}</h3>
+                        <h3>{trail['equipment'] ?
+                            (trail['equipment'].map((item, i) => <span key={i}>{`${item} /`}</span>))
+                            : 'no info'}
+                        </h3>
                     </div>
                     <div className={'info-item'}>
                         <p>{trail.description}</p>

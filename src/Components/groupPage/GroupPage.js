@@ -72,7 +72,7 @@ const GroupPage = (props) => {
                     </div>
                     <div className={'info-item'}>
                         <GroupRoundedIcon fontSize={'large'}/>
-                        <h3>{'8'} Members</h3>
+                        <h3>{group.users ? group.users.length : '1'} Members</h3>
                     </div>
                     <div className={'info-item'}>
                         <p>{group.description}</p>
