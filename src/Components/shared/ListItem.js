@@ -31,7 +31,7 @@ const ListItem = (props) => {
                     </CardContent>
                      <CardMedia className={'card-img'}
                                component="img"
-                               image={props.images[0] ? props.images[0] : 'https://breakthrough.org/wp-content/uploads/2018/10/default-placeholder-image.png'}
+                               image={props.images && props.images[0] ? props.images[0] : 'https://breakthrough.org/wp-content/uploads/2018/10/default-placeholder-image.png'}
                                title="image of trail"
                     />
                 </CardActionArea>
