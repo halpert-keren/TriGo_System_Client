@@ -71,7 +71,7 @@
     padding: 0;
 }
 
-.form-page input, .form-page select, .form-page textarea{
+.input-grp.inp input, .form-page select, .form-page textarea{
     font-family: 'Oswald', sans-serif;
     color: #213B14;
     width: 60%;

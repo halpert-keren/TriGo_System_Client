@@ -150,7 +150,13 @@ const TrailPage = (props) => {
                     <div className={'info-item'}>
                         <p>{trail.description}</p>
                     </div>
-                    <button className={'createGroup'} onClick={createGroup}>Create Group</button>
+                    <button className={'createGroup'} onClick={()=> {
+                        console.log()
+                        history.push({
+                            pathname: '/new-group',
+                            data: trail._id
+                        })
+                    }}>Create Group</button>
                 </div>
                 <div className={'trail-page-img'}>
                     <ImageGallery showPlayButton={false} showNav={false} autoPlay={true} slideInterval={10000}

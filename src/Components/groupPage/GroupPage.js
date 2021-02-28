@@ -17,7 +17,7 @@ const GroupPage = (props) => {
     const [cookies] = useCookies(['user']);
     let history = useHistory()
     const [group, setGroup] = useState({});
-    // const [trail, setTrail] = useState({});
+    const [trail, setTrail] = useState({});
     const [images, setImages] = useState(null);
 
     useEffect(() => {
@@ -26,7 +26,9 @@ const GroupPage = (props) => {
             headers: {'Content-Type': 'application/json'}
         })
             .then(response => response.json())
-            .then(result => setGroup(result))
+            .then(result => {
+                setGroup(result)
+            })
     }, [props.location.data])
 
 
@@ -37,6 +39,7 @@ const GroupPage = (props) => {
         })
             .then(response => response.json())
             .then(result => {
+                setTrail(result)
                 console.log(result.images)
                 setImages(result.images.map(url => ({original: `${url}`})))
             })
@@ -72,7 +75,7 @@ const GroupPage = (props) => {
                     <h1>{group.name}</h1>
                     <div className={'info-item'}>
                         <LocationOnRoundedIcon fontSize={'large'}/>
-                        <h3>{group.trail}</h3>
+                        <h3>{trail.name}</h3>
                     </div>
                     <div className={'info-item'}>
                         <TodayRoundedIcon fontSize={'large'}/>
