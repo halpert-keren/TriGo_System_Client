@@ -5,10 +5,11 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import {CardActions} from "@material-ui/core";
+import {useCookies} from "react-cookie";
 
-const id = '6002fb8ed6fd9e28e064080f';
+// const id = '6002fb8ed6fd9e28e064080f';
 const RequestListItem = (props) => {
-
+    const [cookies] = useCookies(['user']);
     const [group, setGroup] = useState({});
 
     useEffect(() => {
@@ -82,7 +83,7 @@ const RequestListItem = (props) => {
                 </CardContent>
                 <div className={'btns'}>
                 <CardActions>
-                    {id === props.item.ownerID ?
+                    {cookies.user.googleID === props.item.ownerID ?
                         (
                             <>
                                 <button className={'accept'} onClick={acceptRequest}> accept</button>

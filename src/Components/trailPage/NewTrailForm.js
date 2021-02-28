@@ -4,32 +4,30 @@ import {useHistory} from "react-router-dom";
 import {IconButton} from "@material-ui/core";
 import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import Header from "../shared/Header";
-import ArrowBackRoundedIcon from '@material-ui/icons/ArrowBackRounded';
-import {useCookies} from "react-cookie";
 
 const TrailForm = (props) => {
     let history = useHistory()
 
-    const [cookies] = useCookies(['user']);
-    const [user, setUser] = useState();
     const [trailName, setTrailName] = useState('');
-    const [location, setLocation] = useState([{location: ''}]);
+    const [locations, setLocations] = useState(['']);
     const [area, setArea] = useState('');
     const [difficulty, setDifficulty] = useState('');
     const [length, setLength] = useState('');
     const [accessibility, setAccessibility] = useState('');
     const [timeOfDay, setTimeOfDay] = useState('');
     const [lengthOfTime, setLengthOfTime] = useState('');
-    const [picnicArea, setPicnicArea] = useState('');
-    const [photo, setPhoto] = useState('');
+    const [picnicArea, setPicnicArea] = useState(false);
+    const [photos, setPhotos] = useState(['']);
     const [description, setDescription] = useState('');
 
     const addNewTrail = () => {
-        // setUser.unshift(cookies.user.googleID)
-        // console.log(user)
+        if(locations[locations.length-1]==='')
+            locations.pop()
+        if(photos[photos.length-1]==='')
+            photos.pop()
         const body = {
             name: trailName,
-            location: location,
+            location: locations,
             area: area,
             difficulty: difficulty,
             length: length,
@@ -37,7 +35,7 @@ const TrailForm = (props) => {
             timeOfDay: timeOfDay,
             lengthOfTime: lengthOfTime,
             picnicArea: picnicArea,
-            photo: photo,
+            images: photos,
             description: description
         }
         fetch(`http://localhost:3000/api/trails`, {
@@ -48,54 +46,42 @@ const TrailForm = (props) => {
         })
             .then(response => response.json())
             .then(result => {
-                console.log(result)
-                history.push('/')
+                // console.log(result)
+                history.push('/home')
             })
-    }
-
-    const uploadPhoto = () => {
-
-    }
-
-    const backHistory = useHistory();
-    const goBack = () =>{
-        let path = `/home`;
-        backHistory.push(path);
     }
 
     return (
         <>
             <Header/>
             <div className={'form-page'}>
-                <IconButton className={'go-back'} onClick={goBack}>
-                    <ArrowBackRoundedIcon fontSize={'large'}/></IconButton>
                 <div className={'form'}>
                     <div className={'form-left'}>
                         <div className={'input-grp'}>
-                            <label>Trail Name</label>
+                            <label><span>*</span>Trail Name</label>
                             <input required name="Trail Name" value={trailName}
                                    onChange={e => setTrailName(e.target.value)}/>
                         </div>
-                        {location.map((item, index) => {
+                        {locations.map((item, index) => {
                             return (
                                 <div key={index} className={'input-grp'}>
-                                    <label>Location</label>
-                                    <input name="Invite User" value={item.location}
+                                    <label><span>*</span>Location</label>
+                                    <input required name="Location" value={item}
                                            onChange={e => {
-                                               const list = [...location];
-                                               list[index]['location'] = e.target.value;
-                                               setLocation(list)
+                                               const list = [...locations];
+                                               list[index] = e.target.value;
+                                               setLocations(list)
                                            }}/>
-                                    <IconButton onClick={() => setLocation(oldArray => [...oldArray, {location: ''}])}>
+                                    <IconButton onClick={() => setLocations(oldArray => [...oldArray, ''])}>
                                         <AddRoundedIcon style={{color: '#213C14'}}/>
                                     </IconButton>
                                 </div>
                             )
                         })}
                         <div className={'input-grp'}>
-                            <label>Area</label>
-                            <select name="Area" value={area}
-                                    onChange={e => setArea(e.target.value)}>
+                            <label><span>*</span>Area</label>
+                            <select name="Area" value={area} onChange={e => setArea(e.target.value)}>
+                                <option value="">Select</option>
                                 <option value="Golan-Heights">Golan Heights</option>
                                 <option value="Upper-Galilee">Upper Galilee</option>
                                 <option value="Lower-Galilee">Lower Galilee</option>
@@ -112,9 +98,10 @@ const TrailForm = (props) => {
                             </select>
                         </div>
                         <div className={'input-grp'}>
-                            <label>Difficulty</label>
+                            <label><span>*</span>Difficulty</label>
                             <select name="Difficulty" value={difficulty}
                                     onChange={e => setDifficulty(e.target.value)}>
+                                <option value="">Select</option>
                                 <option value="Easy">Easy</option>
                                 <option value="Intermediate">Intermediate</option>
                                 <option value="Hard">Hard</option>
@@ -122,9 +109,10 @@ const TrailForm = (props) => {
                             </select>
                         </div>
                         <div className={'input-grp'}>
-                            <label>Length</label>
+                            <label><span>*</span>Length</label>
                             <select required name="Length" value={length}
                                     onChange={e => setLength(e.target.value)}>
+                                <option value="">Select</option>
                                 <option value="Less-than-1-km">Less than 1 km</option>
                                 <option value="1-to-5-km">1 to 5 km</option>
                                 <option value="5-to-10-km">5 to 10 km</option>
@@ -136,6 +124,7 @@ const TrailForm = (props) => {
                             <label>Accessibility</label>
                             <select name="Accessibility" value={accessibility}
                                     onChange={e => setAccessibility(e.target.value)}>
+                                <option value="">Select</option>
                                 <option value="Kid-friendly">Kid friendly</option>
                                 <option value="Wheelchair-Accessible">Wheelchair accessible</option>
                                 <option value="Car-accessible">Car accessible</option>
@@ -145,6 +134,7 @@ const TrailForm = (props) => {
                             <label>Time of Day</label>
                             <select name="TimeOfDay" value={timeOfDay}
                                     onChange={e => setTimeOfDay(e.target.value)}>
+                                <option value="">Select</option>
                                 <option value="Morning">Morning</option>
                                 <option value="Afternoon">Afternoon</option>
                                 <option value="Night">Night</option>
@@ -154,6 +144,7 @@ const TrailForm = (props) => {
                             <label>Length of Time</label>
                             <select name="LengthOfTime" value={lengthOfTime}
                                     onChange={e => setLengthOfTime(e.target.value)}>
+                                <option value="">Select</option>
                                 <option value="Less-than-an-hour">Less than an hour</option>
                                 <option value="1-to-3-hours">1 to 3 hours</option>
                                 <option value="3-to-6-hours">3 to 6 hours</option>
@@ -165,18 +156,29 @@ const TrailForm = (props) => {
                             <label>Picnic Area</label>
                             <select name="PicnicArea" value={picnicArea}
                                     onChange={e => setPicnicArea(e.target.value)}>
+                                <option value="">Select</option>
                                 <option value={true}>Yes</option>
                                 <option value={false}>No</option>
                             </select>
                         </div>
                     </div>
                     <div className={'form-right'}>
-                        <div className={'input-grp-right'}>
-                            <label>Photo</label>
-                            <button className={'upload'} onClick={uploadPhoto}>Upload</button>
-                            <textarea className={'photo'} name="Photo" rows={10} value={photo}
-                                      onChange={e => setPhoto(e.target.value)}/>
-                        </div>
+                        {photos.map((item, index) => {
+                            return (
+                                <div key={index} className={'input-grp-right'}>
+                                    <label>Photos</label>
+                                    <input name="photos" value={item}
+                                           onChange={e => {
+                                               const list = [...photos];
+                                               list[index] = e.target.value;
+                                               setPhotos(list)
+                                           }}/>
+                                    <IconButton onClick={() => setPhotos(oldArray => [...oldArray, ''])}>
+                                        <AddRoundedIcon style={{color: '#213C14'}}/>
+                                    </IconButton>
+                                </div>
+                            )
+                        })}
                         <div className={'input-grp-right'}>
                             <label>Description</label>
                             <textarea name="Description" rows={10} value={description}

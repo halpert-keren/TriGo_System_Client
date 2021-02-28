@@ -16,12 +16,15 @@ import ArrowBackRoundedIcon from "@material-ui/icons/ArrowBackRounded";
 import {IconButton} from "@material-ui/core";
 import {useHistory} from "react-router-dom";
 import {useCookies} from "react-cookie";
+import "react-image-gallery/styles/css/image-gallery.css";
+import ImageGallery from "react-image-gallery";
 
 const TrailPage = (props) => {
     let history = useHistory()
     const [trail, setTrail] = useState({});
     const [favorite, setFavorite] = useState(false);
     const [cookies, setCookie] = useCookies(['user']);
+    const [images, setImages] = useState([]);
 
     useEffect(() => {
         fetch(`http://localhost:3000/api/trails/${props.location.data}`, {
@@ -32,25 +35,30 @@ const TrailPage = (props) => {
             .then(result => {
                 console.log(result)
                 setTrail(result)
+                setImages(
+                    result.images.map(url => ({
+                        original: `${url}`
+                    }))
+                )
                 console.log(cookies.user)
-                if(cookies.user.savedTrails.includes(result._id)) {
+                if (cookies.user.savedTrails.includes(result._id)) {
                     setFavorite(true)
                 }
             })
-    }, [])
+    }, [cookies.user, props.location.data])
 
     const createGroup = () => {
 
     }
 
     const addToFavorite = () => {
-        if(favorite){
-            const body={
-                savedTrails:[trail._id],
-                action:false
+        if (favorite) {
+            const body = {
+                savedTrails: [trail._id],
+                action: false
             }
 
-            fetch(`http://localhost:3000/api/users/${cookies.user._id}`, {
+            fetch(`http://localhost:3000/api/users/${cookies.user.googleID}`, {
                 method: 'PUT',
                 credentials: 'include',
                 headers: {'Content-Type': 'application/json'},
@@ -62,14 +70,13 @@ const TrailPage = (props) => {
                     setFavorite(false)
                     setCookie('user', result)
                 })
-        }
-        else{
-            const body={
-                savedTrails:[trail._id],
-                action:true
+        } else {
+            const body = {
+                savedTrails: [trail._id],
+                action: true
             }
 
-            fetch(`http://localhost:3000/api/users/${cookies.user._id}`, {
+            fetch(`http://localhost:3000/api/users/${cookies.user.googleID}`, {
                 method: 'PUT',
                 credentials: 'include',
                 headers: {'Content-Type': 'application/json'},
@@ -92,10 +99,10 @@ const TrailPage = (props) => {
                     <IconButton className={'go-back'} onClick={() => history.goBack()}>
                         <ArrowBackRoundedIcon fontSize={'large'}/></IconButton>
                     <div className={'favorite'}>
-                    <h1>{trail.name}</h1>
-                        <IconButton onClick={addToFavorite} >
-                            { favorite?
-                                <FavoriteRoundedIcon fontSize={'large'}/>:
+                        <h1>{trail.name}</h1>
+                        <IconButton onClick={addToFavorite}>
+                            {favorite ?
+                                <FavoriteRoundedIcon fontSize={'large'}/> :
                                 <FavoriteBorderRoundedIcon fontSize={'large'}/>
                             }
                         </IconButton>
@@ -143,8 +150,8 @@ const TrailPage = (props) => {
                     <button className={'createGroup'} onClick={createGroup}>Create Group</button>
                 </div>
                 <div className={'trail-page-img'}>
-                    <img alt={`${trail.name}`}
-                         src={'https://bstatic.com/xdata/images/xphoto/1182x887/82877075.jpg?k=db9e00135b7b8f038aad88a7676235667ca249a5eed997a499677812fa332833&o=?size=S'}/>
+                    <ImageGallery showPlayButton={false} showNav={false} autoPlay={true}
+                                  showFullscreenButton={false} showThumbnails={false}  items={images? images:[{original:'https://breakthrough.org/wp-content/uploads/2018/10/default-placeholder-image.png'}]}/>
                 </div>
             </div>
         </>

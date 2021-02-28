@@ -5,7 +5,7 @@
     flex-wrap: wrap;
 }
 
-.group-page .group-page-img img{
+.group-page .group-page-img{
     object-fit: cover;
     display: flex;
     position: absolute;

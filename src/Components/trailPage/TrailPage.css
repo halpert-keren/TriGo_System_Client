@@ -6,7 +6,7 @@
     margin: 0 auto;
 }
 
-.trail-page .trail-page-img img{
+.trail-page .trail-page-img{
     display: flex;
     position: absolute;
     width: 70%;

@@ -1,4 +1,4 @@
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {NavLink, useHistory} from "react-router-dom";
 import {useCookies} from "react-cookie";
 import {Avatar, MenuItem, MenuList, Grow, Popper, ClickAwayListener, Paper, ButtonBase} from "@material-ui/core";
@@ -9,6 +9,10 @@ const Header = () => {
     const [open, setOpen] = useState(false);
     const anchorRef = useRef(null);
     const [cookies, setCookie] = useCookies(['user']);
+
+    useEffect(() => {
+        console.log('hi')
+    }, [cookies.user])
 
     const handleToggle = () => {
         setOpen((prevOpen) => !prevOpen);
