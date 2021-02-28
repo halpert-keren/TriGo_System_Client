@@ -4,6 +4,7 @@ import {useHistory} from "react-router-dom";
 import {IconButton} from "@material-ui/core";
 import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import Header from "../shared/Header";
+import {useCookies} from "react-cookie";
 
 const TrailForm = (props) => {
     let history = useHistory()
@@ -19,6 +20,7 @@ const TrailForm = (props) => {
     const [picnicArea, setPicnicArea] = useState(false);
     const [photos, setPhotos] = useState(['']);
     const [description, setDescription] = useState('');
+    const [cookies, setCookie] = useCookies(['user']);
 
     const addNewTrail = () => {
         if(locations[locations.length-1]==='')
@@ -46,10 +48,27 @@ const TrailForm = (props) => {
         })
             .then(response => response.json())
             .then(result => {
-                // console.log(result)
-                history.push('/home')
+                const saveTrailBody = {
+                    savedTrails: [result._id],
+                    action: true
+                }
+
+                fetch(`http://localhost:3000/api/users/${cookies.user.googleID}`, {
+                    method: 'PUT',
+                    credentials: 'include',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(saveTrailBody),
+                })
+                    .then(response => response.json())
+                    .then(result => {
+                        console.log(result)
+                        setCookie('user', result)
+                        history.push('/home')
+                    })
+
             })
     }
+
 
     return (
         <>

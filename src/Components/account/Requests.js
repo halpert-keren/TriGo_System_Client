@@ -10,6 +10,7 @@ import {IconButton} from "@material-ui/core";
 const Requests = (props) => {
     const [requestsList, setRequestsList] = useState([]);
     const [cookies] = useCookies(['user']);
+    const [update, setUpdate] = useState(false);
 
     useEffect(() => {
         fetch(`http://localhost:3000/api/requests/?userID=${cookies.user.googleID}`, {
@@ -20,10 +21,10 @@ const Requests = (props) => {
             .then(result => {
                 setRequestsList(result)
             })
-    }, [])
+    }, [update])
 
     const eachItem = (item, index) => {
-        return (<RequestListItem key={index} item={item}/>)
+        return (<RequestListItem key={index} item={item} update={()=>setUpdate(!update)}/>)
     }
 
     const backHistory = useHistory();

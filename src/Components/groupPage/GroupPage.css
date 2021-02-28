@@ -6,13 +6,10 @@
 }
 
 .group-page .group-page-img{
-    display: flex;
-    justify-content: center;
-    /*position: absolute;*/
-    /*width: 70%;*/
-    /*left: 30%;*/
-    /*top: 0px;*/
-    object-fit: cover;
+    position: absolute;
+    right: 0;
+    left: 30%;
+    top: 8%;
 
 }
 
