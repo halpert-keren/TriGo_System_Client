@@ -23,7 +23,7 @@ const ReactRouter = () => {
             <UserRouter path='/new-trail' component={TrailForm}/>
             <UserRouter path='/my-groups' component={MyGroups}/>
             <UserRouter path='/saved-Trails' component={MyTrails}/>
-            {/*<UserRouter path='/requests' component={HomePage}/>*/}
+            <UserRouter path='/requests' component={Requests}/>
             <Footer/>
         </>
     )

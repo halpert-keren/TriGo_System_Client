@@ -9,11 +9,19 @@ import RestaurantRoundedIcon from '@material-ui/icons/RestaurantRounded';
 import AccessibleRoundedIcon from '@material-ui/icons/AccessibleRounded';
 import Brightness4RoundedIcon from '@material-ui/icons/Brightness4Rounded';
 import LocalMallRoundedIcon from '@material-ui/icons/LocalMallRounded';
+import FavoriteBorderRoundedIcon from '@material-ui/icons/FavoriteBorderRounded';
+import FavoriteRoundedIcon from '@material-ui/icons/FavoriteRounded';
 import Header from "../shared/Header";
+import ArrowBackRoundedIcon from "@material-ui/icons/ArrowBackRounded";
+import {IconButton} from "@material-ui/core";
+import {useHistory} from "react-router-dom";
+import {useCookies} from "react-cookie";
 
-const id = '600481161f767f3dfc3b78ce'
 const TrailPage = (props) => {
+    let history = useHistory()
     const [trail, setTrail] = useState({});
+    const [favorite, setFavorite] = useState(false);
+    const [cookies, setCookie] = useCookies(['user']);
 
     useEffect(() => {
         fetch(`http://localhost:3000/api/trails/${props.location.data}`, {
@@ -24,6 +32,10 @@ const TrailPage = (props) => {
             .then(result => {
                 console.log(result)
                 setTrail(result)
+                console.log(cookies.user)
+                if(cookies.user.savedTrails.includes(result._id)) {
+                    setFavorite(true)
+                }
             })
     }, [])
 
@@ -31,16 +43,63 @@ const TrailPage = (props) => {
 
     }
 
-    // const addToFavorite = () => {
-    //
-    // }
+    const addToFavorite = () => {
+        if(favorite){
+            const body={
+                savedTrails:[trail._id],
+                action:false
+            }
+
+            fetch(`http://localhost:3000/api/users/${cookies.user._id}`, {
+                method: 'PUT',
+                credentials: 'include',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(body),
+            })
+                .then(response => response.json())
+                .then(result => {
+                    console.log(result)
+                    setFavorite(false)
+                    setCookie('user', result)
+                })
+        }
+        else{
+            const body={
+                savedTrails:[trail._id],
+                action:true
+            }
+
+            fetch(`http://localhost:3000/api/users/${cookies.user._id}`, {
+                method: 'PUT',
+                credentials: 'include',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(body),
+            })
+                .then(response => response.json())
+                .then(result => {
+                    console.log(result)
+                    setFavorite(true)
+                    setCookie('user', result)
+                })
+        }
+    }
 
     return (
         <>
             <Header/>
             <div className={'trail-page'}>
-                <div className={'trail-page-info'}>
+                <div className={'page-info'}>
+                    <IconButton className={'go-back'} onClick={() => history.goBack()}>
+                        <ArrowBackRoundedIcon fontSize={'large'}/></IconButton>
+                    <div className={'favorite'}>
                     <h1>{trail.name}</h1>
+                        <IconButton onClick={addToFavorite} >
+                            { favorite?
+                                <FavoriteRoundedIcon fontSize={'large'}/>:
+                                <FavoriteBorderRoundedIcon fontSize={'large'}/>
+                            }
+                        </IconButton>
+                    </div>
                     <div className={'info-item'}>
                         <LocationOnRoundedIcon fontSize={'large'}/>
                         <h3>{trail.location}</h3>

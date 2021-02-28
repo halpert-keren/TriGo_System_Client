@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import './MyGroups.css'
-import ListItem from "../shared/ListItem";
+import AccountListItem from "../account/AccountListItem";
 import Header from "../shared/Header";
 import {useCookies} from "react-cookie";
 
@@ -20,7 +20,7 @@ const MyGroups = (props) => {
     }, [])
 
     const eachItem = (item, index) => {
-        return (<ListItem key={index} item={item} path={'/group'}/>)
+        return (<AccountListItem key={index} item={item} path={'/group'}/>)
     }
 
     return (

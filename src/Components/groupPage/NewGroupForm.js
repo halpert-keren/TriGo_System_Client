@@ -5,6 +5,7 @@ import {IconButton} from "@material-ui/core";
 import AddRoundedIcon from '@material-ui/icons/AddRounded';
 import Header from "../shared/Header";
 import {useCookies} from "react-cookie";
+import ArrowBackRoundedIcon from '@material-ui/icons/ArrowBackRounded';
 
 const GroupForm = (props) => {
     let history = useHistory()
@@ -45,10 +46,20 @@ const GroupForm = (props) => {
             })
     }
 
+
+    const backHistory = useHistory();
+    const goBack = () =>{
+        let path = `/home`;
+        backHistory.push(path);
+    }
+
+
     return (
         <>
             <Header/>
             <div className={'form-page'}>
+                <IconButton className={'go-back'} onClick={goBack}>
+                <ArrowBackRoundedIcon fontSize={'large'}/></IconButton>
                 <div className={'form'}>
                     <div className={'form-left'}>
                         <div className={'input-grp'}>

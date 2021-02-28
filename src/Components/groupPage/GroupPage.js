@@ -5,9 +5,13 @@ import TodayRoundedIcon from '@material-ui/icons/TodayRounded';
 import ScheduleRoundedIcon from '@material-ui/icons/ScheduleRounded';
 import LockRoundedIcon from '@material-ui/icons/LockRounded';
 import GroupRoundedIcon from '@material-ui/icons/GroupRounded';
+import ArrowBackRoundedIcon from "@material-ui/icons/ArrowBackRounded";
 import Header from "../shared/Header";
+import {IconButton} from "@material-ui/core";
+import {useHistory} from "react-router-dom";
 
 const GroupPage = (props) => {
+    let history = useHistory()
     const [group, setGroup] = useState({});
 
     useEffect(() => {
@@ -22,15 +26,29 @@ const GroupPage = (props) => {
             })
     }, [])
 
-    const joinGroup = () => {
-
+    const JoinGroup = () => {
+        // const [request, setRequest] = useState({});
+        //
+        // useEffect(() => {
+        //     fetch(`http://localhost:3000/api/groups/${props.location.data}`, {
+        //         credentials: 'include',
+        //         headers: {'Content-Type': 'application/json'}
+        //     })
+        //         .then(response => response.json())
+        //         .then(result => {
+        //             console.log(result)
+        //             setGroup(result)
+        //         })
+        // }, [])
     }
 
     return (
         <>
             <Header/>
             <div className={'group-page'}>
-                <div className={'group-page-info'}>
+                <div className={'page-info'}>
+                    <IconButton className={'go-back'} onClick={() => history.goBack()}>
+                        <ArrowBackRoundedIcon fontSize={'large'}/></IconButton>
                     <h1>{group.name}</h1>
                     <div className={'info-item'}>
                         <LocationOnRoundedIcon fontSize={'large'}/>
@@ -55,7 +73,7 @@ const GroupPage = (props) => {
                     <div className={'info-item'}>
                         <p>{group.description}</p>
                     </div>
-                    <button className={'success'} onClick={joinGroup}>Join</button>
+                    <button className={'join-group'} onClick={JoinGroup}>Join</button>
                 </div>
                 <div className={'group-page-img'}>
                     <img alt={`${group.name}`}
