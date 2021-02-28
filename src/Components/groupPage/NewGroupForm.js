@@ -25,7 +25,7 @@ const GroupForm = (props) => {
         inviteUser.unshift(cookies.user.googleID)
         const body = {
             name: groupName,
-            trail: trailName,
+            // trail: trailName,
             date: date,
             time: time,
             privacy: privacy,
@@ -59,7 +59,8 @@ const GroupForm = (props) => {
             <Header/>
             <div className={'form-page'}>
                 <IconButton className={'go-back'} onClick={goBack}>
-                <ArrowBackRoundedIcon fontSize={'large'}/></IconButton>
+                <ArrowBackRoundedIcon fontSize={'large'}/>
+                </IconButton>
                 <div className={'form'}>
                     <div className={'form-left'}>
                         <div className={'input-grp'}>
@@ -67,11 +68,11 @@ const GroupForm = (props) => {
                             <input required name="Group Name" value={groupName}
                                    onChange={e => setGroupName(e.target.value)}/>
                         </div>
-                        <div className={'input-grp'}>
-                            <label>Trail Name</label>
-                            <input required name="Trail Name" value={trailName}
-                                   onChange={e => setTrailName(e.target.value)}/>
-                        </div>
+                        {/*<div className={'input-grp'}>*/}
+                        {/*    <label>Trail Name</label>*/}
+                        {/*    <input required name="Trail Name" value={trailName}*/}
+                        {/*           onChange={e => setTrailName(e.target.value)}/>*/}
+                        {/*</div>*/}
                         <div className={'input-grp'}>
                             <label>Date</label>
                             <input type={'date'} name="Date" value={date}

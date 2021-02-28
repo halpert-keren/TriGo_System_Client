@@ -3,6 +3,9 @@ import './Requests.css'
 import RequestListItem from "./RequestItem";
 import {useCookies} from "react-cookie";
 import Header from "../shared/Header";
+import {useHistory} from "react-router-dom";
+import ArrowBackRoundedIcon from '@material-ui/icons/ArrowBackRounded';
+import {IconButton} from "@material-ui/core";
 
 const Requests = (props) => {
     const [requestsList, setRequestsList] = useState([]);
@@ -23,10 +26,19 @@ const Requests = (props) => {
         return (<RequestListItem key={index} item={item}/>)
     }
 
+    const backHistory = useHistory();
+    const goBack = () =>{
+        let path = `/home`;
+        backHistory.push(path);
+    }
+
     return (
         <>
             <Header/>
             <div className={'my-requests'}>
+                <IconButton className={'go-back'} onClick={goBack}>
+                    <ArrowBackRoundedIcon fontSize={'large'}/>
+                </IconButton>
                 <h2>My Requests</h2>
                 <div className={'R-result-list'}>
                     {requestsList.map(eachItem)}

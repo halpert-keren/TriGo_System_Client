@@ -3,6 +3,9 @@ import './MyGroups.css'
 import ListItem from "../shared/ListItem";
 import Header from "../shared/Header";
 import {useCookies} from "react-cookie";
+import {useHistory} from "react-router-dom";
+import ArrowBackRoundedIcon from '@material-ui/icons/ArrowBackRounded';
+import {IconButton} from "@material-ui/core";
 
 const MyGroups = (props) => {
     const [cookies] = useCookies(['user']);
@@ -30,10 +33,19 @@ const MyGroups = (props) => {
             })
     }
 
+    const backHistory = useHistory();
+    const goBack = () =>{
+        let path = `/home`;
+        backHistory.push(path);
+    }
+
     return (
         <>
             <Header/>
             <div className={'my-groups'}>
+                <IconButton className={'go-back'} onClick={goBack}>
+                    <ArrowBackRoundedIcon fontSize={'large'}/>
+                </IconButton>
                 <h2>My Groups</h2>
                 <div className={'result-list'}>
                     {groupList.map(eachItem)}

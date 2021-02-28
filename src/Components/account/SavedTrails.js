@@ -3,6 +3,9 @@ import './SavedTrails.css'
 import ListItem from "../shared/ListItem";
 import Header from "../shared/Header";
 import {useCookies} from "react-cookie";
+import {useHistory} from "react-router-dom";
+import ArrowBackRoundedIcon from '@material-ui/icons/ArrowBackRounded';
+import {IconButton} from "@material-ui/core";
 
 const MyTrails = (props) => {
     const [cookies] = useCookies(['user']);
@@ -34,10 +37,19 @@ const MyTrails = (props) => {
         return (<ListItem key={index} item={item} path={'/trail'} images={item.images}/>)
     }
 
+    const backHistory = useHistory();
+    const goBack = () =>{
+        let path = `/home`;
+        backHistory.push(path);
+    }
+
     return (
         <>
             <Header/>
             <div className={'my-trails'}>
+                <IconButton className={'go-back'} onClick={goBack}>
+                    <ArrowBackRoundedIcon fontSize={'large'}/>
+                </IconButton>
                 <h2>My Trails</h2>
                 <div className={'result-list'}>
                     {trailList.map(eachItem)}

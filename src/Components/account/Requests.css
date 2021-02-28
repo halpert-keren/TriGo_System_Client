@@ -2,6 +2,7 @@
     display: flex;
     position: relative;
     justify-items: flex-start;
+    padding-left: 5%;
 }
 
 .result-list::-webkit-scrollbar {
