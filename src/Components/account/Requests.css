@@ -2,6 +2,7 @@
     display: flex;
     position: relative;
     justify-items: flex-start;
+    flex-wrap: wrap;
     padding-left: 5%;
 }
 
