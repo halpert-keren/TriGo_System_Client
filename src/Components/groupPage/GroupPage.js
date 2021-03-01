@@ -8,6 +8,7 @@ import GroupRoundedIcon from '@material-ui/icons/GroupRounded';
 import ArrowBackRoundedIcon from "@material-ui/icons/ArrowBackRounded";
 import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
+import image from '../shared/imagePlaceholder.png'
 import Header from "../shared/Header";
 import {useHistory} from "react-router-dom";
 import {IconButton, Modal} from "@material-ui/core";
@@ -110,9 +111,7 @@ const GroupPage = (props) => {
                 </div>
                 <div className={'group-page-img'}>
                     <ImageGallery showPlayButton={false} showNav={false} autoPlay={true}
-                                  showFullscreenButton={false} showThumbnails={false} items={images? images:[{original:'https://breakthrough.org/wp-content/uploads/2018/10/default-placeholder-image.png'}]}/>
-                    {/*<img alt={`${group.name}`}*/}
-                    {/*     src={'https://bstatic.com/xdata/images/xphoto/1182x887/82877075.jpg?k=db9e00135b7b8f038aad88a7676235667ca249a5eed997a499677812fa332833&o=?size=S'}/>*/}
+                                  showFullscreenButton={false} showThumbnails={false} items={[{original:image}]}/>
                 </div>
             </div>
         </>

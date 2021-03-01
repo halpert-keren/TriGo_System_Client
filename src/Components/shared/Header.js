@@ -33,11 +33,11 @@ const Header = () => {
                 'user': cookies.user.googleID
             }
         })
+            .then(response => response.statusText)
             .then(result => {
                 setCookie('user', '')
                 history.push('/')
             })
-            .catch(err => console.log(err))
     }
 
     return (

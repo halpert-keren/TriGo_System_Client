@@ -2,12 +2,10 @@ import React, {useEffect, useState} from "react";
 import './RequestItem.css'
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import {CardActions} from "@material-ui/core";
 import {useCookies} from "react-cookie";
 
-// const id = '6002fb8ed6fd9e28e064080f';
 const RequestListItem = (props) => {
     const [cookies] = useCookies(['user']);
     const [group, setGroup] = useState({});
@@ -21,7 +19,7 @@ const RequestListItem = (props) => {
             .then(result => {
                 setGroup(result)
             })
-    }, [])
+    }, [props.item.groupID])
 
     const acceptRequest = () =>{
         //send mail about accept
@@ -104,7 +102,6 @@ const RequestListItem = (props) => {
             </Card>
         </div>
     )
-
 }
 
 export default RequestListItem
