@@ -133,11 +133,11 @@ const GroupFilterList = (props) => {
         }
 
         let lengthUrl = 'length=['
-        if (lengthChecks[1]) lengthUrl = lengthUrl.concat("\"length=Less-than-1-km\",")
-        if (lengthChecks[2]) lengthUrl = lengthUrl.concat("\"length=1-to-5-km\",")
-        if (lengthChecks[3]) lengthUrl = lengthUrl.concat("\"length=5-to-10-km\",")
-        if (lengthChecks[4]) lengthUrl = lengthUrl.concat("\"length=10-to-20-km\",")
-        if (lengthChecks[5]) lengthUrl = lengthUrl.concat("\"length=More-than-20-km\",")
+        if (lengthChecks[1]) lengthUrl = lengthUrl.concat("\"Less-than-1-km\",")
+        if (lengthChecks[2]) lengthUrl = lengthUrl.concat("\"1-to-5-km\",")
+        if (lengthChecks[3]) lengthUrl = lengthUrl.concat("\"5-to-10-km\",")
+        if (lengthChecks[4]) lengthUrl = lengthUrl.concat("\"10-to-20-km\",")
+        if (lengthChecks[5]) lengthUrl = lengthUrl.concat("\"More-than-20-km\",")
         if(lengthUrl !== 'length=[') {
             lengthUrl = lengthUrl.substring(0,lengthUrl.length-1);
             lengthUrl = lengthUrl.concat("]&")
@@ -145,11 +145,11 @@ const GroupFilterList = (props) => {
         }
 
         let lengthOfTimeUrl = 'lengthOfTime=['
-        if (lengthOfTimeChecks[1]) lengthOfTimeUrl = lengthOfTimeUrl.concat("\"lengthOfTime=Less-than-an-hour\",")
-        if (lengthOfTimeChecks[2]) lengthOfTimeUrl = lengthOfTimeUrl.concat("\"lengthOfTime=1-to-3-hours\",")
-        if (lengthOfTimeChecks[3]) lengthOfTimeUrl = lengthOfTimeUrl.concat("\"lengthOfTime=3-to-6-hours\",")
-        if (lengthOfTimeChecks[4]) lengthOfTimeUrl = lengthOfTimeUrl.concat("\"lengthOfTime=6-to-10-hours\",")
-        if (lengthOfTimeChecks[5]) lengthOfTimeUrl = lengthOfTimeUrl.concat("\"lengthOfTime=More-than-10-hours\",")
+        if (lengthOfTimeChecks[1]) lengthOfTimeUrl = lengthOfTimeUrl.concat("\"Less-than-an-hour\",")
+        if (lengthOfTimeChecks[2]) lengthOfTimeUrl = lengthOfTimeUrl.concat("\"1-to-3-hours\",")
+        if (lengthOfTimeChecks[3]) lengthOfTimeUrl = lengthOfTimeUrl.concat("\"3-to-6-hours\",")
+        if (lengthOfTimeChecks[4]) lengthOfTimeUrl = lengthOfTimeUrl.concat("\"6-to-10-hours\",")
+        if (lengthOfTimeChecks[5]) lengthOfTimeUrl = lengthOfTimeUrl.concat("\"More-than-10-hours\",")
         if(lengthOfTimeUrl !== 'lengthOfTime=[') {
             lengthOfTimeUrl = lengthOfTimeUrl.substring(0,lengthOfTimeUrl.length-1);
             lengthOfTimeUrl = lengthOfTimeUrl.concat("]&")
