@@ -47,9 +47,11 @@ const GroupForm = (props) => {
     }
 
     const addNewGroup = (users) => {
+        console.log(users)
         if (inviteUser[inviteUser.length - 1] === '')
             inviteUser.pop()
         inviteUser.unshift(cookies.user.email)
+        console.log(inviteUser)
         const body = {
             name: groupName,
             trail: props.location.data,
