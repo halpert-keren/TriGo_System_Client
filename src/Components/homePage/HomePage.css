@@ -1,7 +1,6 @@
 .home-page {
     margin: 0 auto;
     position: absolute;
-    /*position: fixed;*/
     top: calc(12%);
     width: 100%;
     display: flex;

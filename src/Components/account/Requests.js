@@ -13,7 +13,7 @@ const Requests = (props) => {
     const [update, setUpdate] = useState(false);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/requests/?email=${cookies.user.email}`, {
+        fetch(`https://trigo-system.herokuapp.com/api/requests/?email=${cookies.user.email}`, {
             credentials: 'include',
             headers: {'Content-Type': 'application/json'}
         })
@@ -47,7 +47,6 @@ const Requests = (props) => {
             </div>
         </>
     )
-
 }
 
 export default Requests

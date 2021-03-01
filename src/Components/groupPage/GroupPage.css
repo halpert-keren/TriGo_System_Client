@@ -33,16 +33,6 @@
 
 }
 
-/*.page-info .info-item {*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    margin-bottom: 2%;*/
-/*}*/
-
-/*.page-info .info-item p {*/
-/*    font-size: 120%;*/
-/*}*/
-
 .page-info .info-item h3 {
     display: flex;
     flex-wrap: wrap;
@@ -50,11 +40,6 @@
     font-size: 120%;
     font-weight: normal;
 }
-
-/*.page-info h1 {*/
-/*    position: relative;*/
-/*    margin: 2%;*/
-/*}*/
 
 .join-group{
     position: relative;

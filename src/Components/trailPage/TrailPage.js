@@ -27,29 +27,23 @@ const TrailPage = (props) => {
     const [images, setImages] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/trails/${props.location.data}`, {
+        fetch(`https://trigo-system.herokuapp.com/api/trails/${props.location.data}`, {
             credentials: 'include',
             headers: {'Content-Type': 'application/json'}
         })
             .then(response => response.json())
             .then(result => {
-                console.log(result)
                 setTrail(result)
                 setImages(
                     result.images.map(url => ({
                         original: `${url}`
                     }))
                 )
-                console.log(cookies.user)
                 if (cookies.user.savedTrails.includes(result._id)) {
                     setFavorite(true)
                 }
             })
     }, [cookies.user, props.location.data])
-
-    const createGroup = () => {
-
-    }
 
     const addToFavorite = () => {
         if (favorite) {
@@ -57,8 +51,7 @@ const TrailPage = (props) => {
                 savedTrails: [trail._id],
                 action: false
             }
-
-            fetch(`http://localhost:3000/api/users/${cookies.user.googleID}`, {
+            fetch(`https://trigo-system.herokuapp.com/api/users/${cookies.user.googleID}`, {
                 method: 'PUT',
                 credentials: 'include',
                 headers: {'Content-Type': 'application/json'},
@@ -66,7 +59,6 @@ const TrailPage = (props) => {
             })
                 .then(response => response.json())
                 .then(result => {
-                    console.log(result)
                     setFavorite(false)
                     setCookie('user', result)
                 })
@@ -75,8 +67,7 @@ const TrailPage = (props) => {
                 savedTrails: [trail._id],
                 action: true
             }
-
-            fetch(`http://localhost:3000/api/users/${cookies.user.googleID}`, {
+            fetch(`https://trigo-system.herokuapp.com/api/users/${cookies.user.googleID}`, {
                 method: 'PUT',
                 credentials: 'include',
                 headers: {'Content-Type': 'application/json'},
@@ -84,7 +75,6 @@ const TrailPage = (props) => {
             })
                 .then(response => response.json())
                 .then(result => {
-                    console.log(result)
                     setFavorite(true)
                     setCookie('user', result)
                 })

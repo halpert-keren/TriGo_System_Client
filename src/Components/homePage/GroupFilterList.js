@@ -75,7 +75,7 @@ const GroupFilterList = (props) => {
     }, [date, time, areaChecks, difficultyChecks, accessibilityChecks, picnicAreaChecks, lengthChecks, lengthOfTimeChecks, timeOfDayChecks])
 
     const getUrl = () => {
-        let url = 'http://localhost:3000/api/groups/?'
+        let url = 'https://trigo-system.herokuapp.com/api/groups/?'
 
         if(date !== '')
             url = url.concat(`date=${date}&`)
@@ -166,8 +166,8 @@ const GroupFilterList = (props) => {
                     url = url.concat(timeOfDayUrl)
                 }
 
-        if(url === 'http://localhost:3000/api/groups/?')
-            url = 'http://localhost:3000/api/groups'
+        if(url === 'https://trigo-system.herokuapp.com/api/groups/?')
+            url = 'https://trigo-system.herokuapp.com/api/groups'
         props.setUrl(url)
     }
 

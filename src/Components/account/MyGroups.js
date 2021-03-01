@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
 import './MyGroups.css'
-import image from '../shared/groupPlaceholder.png'
 import ListItem from "../shared/ListItem";
 import Header from "../shared/Header";
 import {useCookies} from "react-cookie";
@@ -13,7 +12,7 @@ const MyGroups = (props) => {
     const [groupList, setGroupList] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/groups/?email=${cookies.user.email}`, {
+        fetch(`https://trigo-system.herokuapp.com/api/groups/?email=${cookies.user.email}`, {
             credentials: 'include',
             headers: {'Content-Type': 'application/json'}
         })

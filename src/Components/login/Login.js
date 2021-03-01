@@ -11,7 +11,7 @@ const Login = (props) => {
 
     const googleSuccess = async (response) => {
         const body = {token: response.tokenId}
-        fetch(`http://localhost:3000/auth`, {
+        fetch(`https://trigo-system.herokuapp.com/auth`, {
             method: 'POST',
             credentials: 'include',
             headers: {'Content-Type': 'application/json'},
