@@ -1,11 +1,11 @@
 import React from "react";
 import './ResultList.css'
-import image from '../shared/imagePlaceholder.png'
+import image from '../shared/groupPlaceholder.png'
 import ListItem from "../shared/ListItem";
 
 const ResultList = (props) => {
     const eachItem = (item, index) => {
-        if(props.type === 'trail')
+        if(props.type === 'trails')
             return (<ListItem type={props.type} key={index} item={item} path={props.path} images={item.images}/>)
         else
             return (<ListItem type={props.type} key={index} item={item} path={props.path} images={[image]}/>)

@@ -13,7 +13,7 @@ const Requests = (props) => {
     const [update, setUpdate] = useState(false);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/requests/?userID=${cookies.user.googleID}`, {
+        fetch(`http://localhost:3000/api/requests/?email=${cookies.user.email}`, {
             credentials: 'include',
             headers: {'Content-Type': 'application/json'}
         })

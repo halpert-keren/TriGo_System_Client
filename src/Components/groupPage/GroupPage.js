@@ -8,7 +8,7 @@ import GroupRoundedIcon from '@material-ui/icons/GroupRounded';
 import ArrowBackRoundedIcon from "@material-ui/icons/ArrowBackRounded";
 import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
-import image from '../shared/imagePlaceholder.png'
+import image from '../shared/groupPlaceholder.png'
 import Header from "../shared/Header";
 import {useHistory} from "react-router-dom";
 import {IconButton, Modal} from "@material-ui/core";
@@ -19,7 +19,6 @@ const GroupPage = (props) => {
     let history = useHistory()
     const [group, setGroup] = useState({});
     const [trail, setTrail] = useState({});
-    const [images, setImages] = useState(null);
     const [open, setOpen] = useState(false);
 
     useEffect(() => {
@@ -29,29 +28,24 @@ const GroupPage = (props) => {
         })
             .then(response => response.json())
             .then(result => {
-                setGroup(result)
+                fetch(`http://localhost:3000/api/trails/${result.trail}`, {
+                    credentials: 'include',
+                    headers: {'Content-Type': 'application/json'}
+                })
+                    .then(responseTwo => responseTwo.json())
+                    .then(resultTwo => {
+                        console.log(result)
+                        setGroup(result)
+                        console.log(resultTwo)
+                        setTrail(resultTwo)
+                    })
             })
     }, [props.location.data])
-
-
-    useEffect(() => {
-        fetch(`http://localhost:3000/api/trails/${group.trail}`, {
-            credentials: 'include',
-            headers: {'Content-Type': 'application/json'}
-        })
-            .then(response => response.json())
-            .then(result => {
-                setTrail(result)
-                console.log(result.images)
-                setImages(result.images.map(url => ({original: `${url}`})))
-            })
-    }, [group])
-
 
     const joinGroup = () => {
         const body = {
             groupID: group._id,
-            requesterID: cookies.user.googleID,
+            requesterID: cookies.user.email,
         }
         console.log(body)
         fetch(`http://localhost:3000/api/requests/`, {
@@ -86,7 +80,7 @@ const GroupPage = (props) => {
                     <h1>{group.name}</h1>
                     <div className={'info-item'}>
                         <LocationOnRoundedIcon fontSize={'large'}/>
-                        <h3>{trail.name}</h3>
+                        <h3>{trail ? trail.name : 'no info'}</h3>
                     </div>
                     <div className={'info-item'}>
                         <TodayRoundedIcon fontSize={'large'}/>
