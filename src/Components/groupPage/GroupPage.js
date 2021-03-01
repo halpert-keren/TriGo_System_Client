@@ -99,7 +99,7 @@ const GroupPage = (props) => {
                     <button className={'success'} onClick={joinGroup}>Join</button>
                 </div>
                 <div className={'group-page-img'}>
-                    <ImageGallery showPlayButton={false} showNav={false} autoPlay={true}
+                    <ImageGallery showPlayButton={false} showNav={false} autoPlay={true} slideInterval={5000}
                                   showFullscreenButton={false} showThumbnails={false} items={images? images:[{original:image}]}/>
                 </div>
             </div>
