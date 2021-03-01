@@ -71,7 +71,7 @@ const TrailFilterList = (props) => {
     }, [areaChecks, difficultyChecks, accessibilityChecks, picnicAreaChecks, lengthChecks, lengthOfTimeChecks, timeOfDayChecks])
 
     const getUrl = () => {
-        let url = 'http://localhost:3000/api/trails/?'
+        let url = 'https://trigo-system.herokuapp.com/api/trails/?'
 
         if (areaChecks[1]) url = url.concat('area=Golan-Heights&')
         if (areaChecks[2]) url = url.concat('area=Upper-Galilee&')
@@ -399,7 +399,6 @@ const TrailFilterList = (props) => {
             {timeOfDayFilter}
         </List>
     )
-
 }
 
 export default TrailFilterList

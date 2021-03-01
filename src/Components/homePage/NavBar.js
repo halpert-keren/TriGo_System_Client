@@ -8,7 +8,6 @@ const NavBar = (props) => {
             <NavLink to={'/new-trail'}>Create Trail</NavLink>
         </div>
     )
-
 }
 
 export default NavBar

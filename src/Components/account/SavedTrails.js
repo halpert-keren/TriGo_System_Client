@@ -10,18 +10,16 @@ import {IconButton} from "@material-ui/core";
 const MyTrails = (props) => {
     const [cookies] = useCookies(['user']);
     const [trailList, setTrailList] = useState([]);
-    // const [user, setUser] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/users/${cookies.user.googleID}`, {
+        fetch(`https://trigo-system.herokuapp.com/api/users/${cookies.user.googleID}`, {
             credentials: 'include',
             headers: {'Content-Type': 'application/json'}
         })
             .then(response => response.json())
             .then(result => {
-                // setUser(result)
                 result.savedTrails.forEach((trail) => {
-                    fetch(`http://localhost:3000/api/trails/${trail}`, {
+                    fetch(`https://trigo-system.herokuapp.com/api/trails/${trail}`, {
                         credentials: 'include',
                         headers: {'Content-Type': 'application/json'}
                     })
@@ -57,7 +55,6 @@ const MyTrails = (props) => {
             </div>
         </>
     )
-
 }
 
 export default MyTrails

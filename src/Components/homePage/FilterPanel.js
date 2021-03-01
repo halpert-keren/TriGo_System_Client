@@ -13,14 +13,14 @@ const FilterPanel = (props) => {
                     <button className={props.selected === 'trails' ? 'selected' : ''}
                             onClick={() => {
                                 props.setSelected('trails');
-                                props.setUrl(`http://localhost:3000/api/trails/`)
+                                props.setUrl(`https://trigo-system.herokuapp.com/api/trails/`)
                             }}
                     >Trails
                     </button>
                     <button className={props.selected === 'groups' ? 'selected' : ''}
                             onClick={() => {
                                 props.setSelected('groups');
-                                props.setUrl(`http://localhost:3000/api/groups/`)
+                                props.setUrl(`https://trigo-system.herokuapp.com/api/groups/`)
                             }}
                     >Groups
                     </button>

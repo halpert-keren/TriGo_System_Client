@@ -5,7 +5,6 @@ import ListItem from "../shared/ListItem";
 
 const ResultList = (props) => {
     const eachItem = (item, index) => {
-        console.log(item)
         if(props.type === 'trails')
             return (<ListItem type={props.type} key={index} item={item} path={props.path} images={item.images}/>)
         else
@@ -17,7 +16,6 @@ const ResultList = (props) => {
             {props.list.map(eachItem)}
         </div>
     )
-
 }
 
 export default ResultList

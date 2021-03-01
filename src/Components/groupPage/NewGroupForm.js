@@ -21,7 +21,7 @@ const GroupForm = (props) => {
     const [emailList, setEmailList] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/users`, {
+        fetch(`https://trigo-system.herokuapp.com/api/users`, {
             credentials: 'include',
             headers: {'Content-Type': 'application/json',}
         })
@@ -42,14 +42,11 @@ const GroupForm = (props) => {
                 resolve()
         })
         promise.then(() => {
-            console.log(users)
             addNewGroup(users)
-            // return users
         })
     }
 
     const addNewGroup = (users) => {
-        // תביא את הID של כל המשתמשים שמופיעים ברשימת הINVITEUSER בכל אינפוט
         if (inviteUser[inviteUser.length - 1] === '')
             inviteUser.pop()
         inviteUser.unshift(cookies.user.email)
@@ -62,8 +59,7 @@ const GroupForm = (props) => {
             description: description,
             users: inviteUser
         }
-        console.log(body)
-        fetch(`http://localhost:3000/api/groups`, {
+        fetch(`https://trigo-system.herokuapp.com/api/groups`, {
             method: 'POST',
             credentials: 'include',
             headers: {'Content-Type': 'application/json'},
@@ -71,7 +67,6 @@ const GroupForm = (props) => {
         })
             .then(response => response.json())
             .then(result => {
-                console.log(result)
                 history.push('/home')
             })
     }
@@ -79,7 +74,6 @@ const GroupForm = (props) => {
     const goBack = () =>{
         history.push(`/home`);
     }
-
 
     return (
         <>
@@ -95,11 +89,6 @@ const GroupForm = (props) => {
                             <input required name="Group Name" value={groupName}
                                    onChange={e => setGroupName(e.target.value)}/>
                         </div>
-                        {/*<div className={'input-grp'}>*/}
-                        {/*    <label>Trail Name</label>*/}
-                        {/*    <input required name="Trail Name" value={trailName}*/}
-                        {/*           onChange={e => setTrailName(e.target.value)}/>*/}
-                        {/*</div>*/}
                         <div className={'input-grp inp'}>
                             <label>Date</label>
                             <input type={'date'} name="Date" value={date}
@@ -131,17 +120,6 @@ const GroupForm = (props) => {
                                                 setInviteUser(list)
                                             }}
                                             renderInput={(params) => <TextField variant={'outlined'} {...params} label=" "/>}/>
-
-
-
-
-
-                                    {/*<input name="Invite User" value={item}*/}
-                                    {/*       onChange={e => {*/}
-                                    {/*           const list = [...inviteUser];*/}
-                                    {/*           list[index] = e.target.value;*/}
-                                    {/*           setInviteUser(list)*/}
-                                    {/*       }}/>*/}
                                     <IconButton onClick={() => setInviteUser(oldArray => [...oldArray, ''])}>
                                         <AddRoundedIcon style={{color: '#213C14'}}/>
                                     </IconButton>

@@ -18,12 +18,11 @@ const GroupPage = (props) => {
     const [cookies] = useCookies(['user']);
     let history = useHistory()
     const [group, setGroup] = useState({});
-    const [trail, setTrail] = useState({});
     const [open, setOpen] = useState(false);
     const [images, setImages] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/groups/${props.location.data}`, {
+        fetch(`https://trigo-system.herokuapp.com/api/groups/${props.location.data}`, {
             credentials: 'include',
             headers: {'Content-Type': 'application/json'}
         })
@@ -35,17 +34,6 @@ const GroupPage = (props) => {
                         original: `${url}`
                     }))
                 )
-                // fetch(`http://localhost:3000/api/trails/${result.trail}`, {
-                //     credentials: 'include',
-                //     headers: {'Content-Type': 'application/json'}
-                // })
-                //     .then(responseTwo => responseTwo.json())
-                //     .then(resultTwo => {
-                //         console.log(result)
-                //         setGroup(result)
-                //         console.log(resultTwo)
-                //         setTrail(resultTwo)
-                //     })
             })
     }, [props.location.data])
 
@@ -55,7 +43,7 @@ const GroupPage = (props) => {
             requesterID: cookies.user.email,
         }
         console.log(body)
-        fetch(`http://localhost:3000/api/requests/`, {
+        fetch(`https://trigo-system.herokuapp.com/api/requests/`, {
             method: 'POST',
             credentials: 'include',
             headers: {'Content-Type': 'application/json'},

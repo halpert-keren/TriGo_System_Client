@@ -39,7 +39,6 @@ const ListItem = (props) => {
             </Card>
         </div>
     )
-
 }
 
 export default ListItem

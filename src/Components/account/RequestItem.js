@@ -15,7 +15,7 @@ const RequestListItem = (props) => {
     const [openDecline, setOpenDecline] = useState(false);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/api/groups/${props.item.groupID}`, {
+        fetch(`https://trigo-system.herokuapp.com/api/groups/${props.item.groupID}`, {
             credentials: 'include',
             headers: {'Content-Type': 'application/json'}
         })
@@ -29,7 +29,7 @@ const RequestListItem = (props) => {
         const body={
             users: props.item.requesterID
         }
-        fetch(`http://localhost:3000/api/groups/${props.item.groupID}`, {
+        fetch(`https://trigo-system.herokuapp.com/api/groups/${props.item.groupID}`, {
             method: 'PUT',
             credentials: 'include',
             headers: {'Content-Type': 'application/json'},
@@ -37,7 +37,7 @@ const RequestListItem = (props) => {
         })
             .then(response => response.json())
             .then(result => {
-                fetch(`http://localhost:3000/api/requests/${props.item._id}`, {
+                fetch(`https://trigo-system.herokuapp.com/api/requests/${props.item._id}`, {
                     method: 'DELETE',
                     credentials: 'include',
                     headers: {'Content-Type': 'application/json'},
@@ -45,13 +45,12 @@ const RequestListItem = (props) => {
                     .then(response => response.json())
                     .then(result => {
                         props.update()
-                        // setOpenAccept(true)
                     })
             })
     }
 
     const declineRequest = () =>{
-        fetch(`http://localhost:3000/api/requests/${props.item._id}`, {
+        fetch(`https://trigo-system.herokuapp.com/api/requests/${props.item._id}`, {
             method: 'DELETE',
             credentials: 'include',
             headers: {'Content-Type': 'application/json'},
@@ -59,12 +58,11 @@ const RequestListItem = (props) => {
             .then(response => response.json())
             .then(result => {
                 props.update()
-                // setOpenDecline(true)
             })
     }
 
     const deleteRequest = () =>{
-        fetch(`http://localhost:3000/api/requests/${props.item._id}`, {
+        fetch(`https://trigo-system.herokuapp.com/api/requests/${props.item._id}`, {
             method: 'DELETE',
             credentials: 'include',
             headers: {'Content-Type': 'application/json'},
@@ -72,7 +70,6 @@ const RequestListItem = (props) => {
             .then(response => response.json())
             .then(result => {
                 props.update()
-                // setOpenDelete(true)
             })
     }
 
@@ -129,7 +126,6 @@ const RequestListItem = (props) => {
             {deleteModal}
             {declineModal}
             <Card className={'R-card'} elevation={5}>
-                {/*<CardActionArea className={'card-item'} style={{display: 'flex'}} onClick={() => {}}>*/}
                 <CardContent className={'R-card-content'}>
                     <Typography variant="h5">
                         {group.name}

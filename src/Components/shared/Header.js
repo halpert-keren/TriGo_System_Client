@@ -10,10 +10,6 @@ const Header = () => {
     const anchorRef = useRef(null);
     const [cookies, setCookie] = useCookies(['user']);
 
-    useEffect(() => {
-        console.log('hi')
-    }, [cookies.user])
-
     const handleToggle = () => {
         setOpen((prevOpen) => !prevOpen);
     };
@@ -26,7 +22,7 @@ const Header = () => {
     };
 
     const logout = () => {
-        fetch(`http://localhost:3000/auth/logout`, {
+        fetch(`https://trigo-system.herokuapp.com/auth/logout`, {
             credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',

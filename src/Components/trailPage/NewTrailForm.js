@@ -45,7 +45,7 @@ const TrailForm = (props) => {
             images: photos,
             description: description
         }
-        fetch(`http://localhost:3000/api/trails`, {
+        fetch(`https://trigo-system.herokuapp.com/api/trails`, {
             method: 'POST',
             credentials: 'include',
             headers: {'Content-Type': 'application/json'},
@@ -57,8 +57,7 @@ const TrailForm = (props) => {
                     savedTrails: [result._id],
                     action: true
                 }
-
-                fetch(`http://localhost:3000/api/users/${cookies.user.googleID}`, {
+                fetch(`https://trigo-system.herokuapp.com/api/users/${cookies.user.googleID}`, {
                     method: 'PUT',
                     credentials: 'include',
                     headers: {'Content-Type': 'application/json'},
@@ -66,11 +65,9 @@ const TrailForm = (props) => {
                 })
                     .then(response => response.json())
                     .then(result => {
-                        console.log(result)
                         setCookie('user', result)
                         history.push('/home')
                     })
-
             })
     }
 
