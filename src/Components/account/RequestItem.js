@@ -5,10 +5,14 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import {CardActions} from "@material-ui/core";
 import {useCookies} from "react-cookie";
+import {IconButton, Modal} from "@material-ui/core";
 
 const RequestListItem = (props) => {
     const [cookies] = useCookies(['user']);
     const [group, setGroup] = useState({});
+    const [openAccept, setOpenAccept] = useState(false);
+    const [openDelete, setOpenDelete] = useState(false);
+    const [openDecline, setOpenDecline] = useState(false);
 
     useEffect(() => {
         fetch(`http://localhost:3000/api/groups/${props.item.groupID}`, {
@@ -22,7 +26,6 @@ const RequestListItem = (props) => {
     }, [props.item.groupID])
 
     const acceptRequest = () =>{
-        //send mail about accept
         const body={
             users: props.item.requesterID
         }
@@ -42,13 +45,12 @@ const RequestListItem = (props) => {
                     .then(response => response.json())
                     .then(result => {
                         props.update()
-                        console.log(result)
+                        setOpenAccept(true)
                     })
             })
     }
 
     const declineRequest = () =>{
-        //send mail about decline
         fetch(`http://localhost:3000/api/requests/${props.item._id}`, {
             method: 'DELETE',
             credentials: 'include',
@@ -57,7 +59,7 @@ const RequestListItem = (props) => {
             .then(response => response.json())
             .then(result => {
                 props.update()
-                console.log(result)
+                setOpenDelete(true)
             })
     }
 
@@ -70,12 +72,37 @@ const RequestListItem = (props) => {
             .then(response => response.json())
             .then(result => {
                 props.update()
-                console.log(result)
+                setOpenDecline(true)
             })
     }
 
+    const acceptModal = (
+        <Modal disableAutoFocus disableEnforceFocus className={'request-alert'} open={openAccept} onClose={()=>setOpenAccept(false)}>
+            <div className={'modal'}>
+                <p> Your approved has been sent! </p>
+            </div>
+        </Modal>
+    )
+    const deleteModal = (
+        <Modal disableAutoFocus disableEnforceFocus className={'request-alert'} open={openDelete} onClose={()=>setOpenDelete(false)}>
+            <div className={'modal'}>
+                <p> We deleted your request! </p>
+            </div>
+        </Modal>
+    )
+    const declineModal = (
+        <Modal disableAutoFocus disableEnforceFocus className={'request-alert'} open={openDecline} onClose={()=>setOpenDecline(false)}>
+            <div className={'modal'}>
+                <p> We got your decline! </p>
+            </div>
+        </Modal>
+    )
+
     return (
         <div className={'list-item'}>
+            {acceptModal}
+            {deleteModal}
+            {declineModal}
             <Card className={'R-card'} elevation={5}>
                 {/*<CardActionArea className={'card-item'} style={{display: 'flex'}} onClick={() => {}}>*/}
                 <CardContent className={'R-card-content'}>
