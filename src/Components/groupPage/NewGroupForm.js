@@ -31,28 +31,11 @@ const GroupForm = (props) => {
             })
     }, [])
 
-    const getUserIDs = () => {
-        let users = []
-        let i = 0
-        const promise = new Promise((resolve, reject) => {
-            inviteUser.forEach((user, index)=>{
-               users.push(user)
-            })
-            if (i === inviteUser.length-1)
-                resolve()
-        })
-        promise.then(() => {
-            addNewGroup(users)
-        })
-    }
 
     const addNewGroup = () => {
-
-        console.log('users')
         if (inviteUser[inviteUser.length - 1] === '')
             inviteUser.pop()
         inviteUser.unshift(cookies.user.email)
-        console.log(inviteUser)
         const body = {
             name: groupName,
             trail: props.location.data,
