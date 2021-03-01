@@ -24,7 +24,7 @@ const MyGroups = (props) => {
     })
 
     const eachItem = (item, index) => {
-        return (<ListItem type={'group'} key={index} item={item} path={'/group'} images={[image]}/>)
+        return (<ListItem type={'group'} key={index} item={item} path={'/group'} images={item.trail.images}/>)
     }
 
     const backHistory = useHistory();

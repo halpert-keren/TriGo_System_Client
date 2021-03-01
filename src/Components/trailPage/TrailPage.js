@@ -153,7 +153,7 @@ const TrailPage = (props) => {
                         console.log()
                         history.push({
                             pathname: '/new-group',
-                            data: trail._id
+                            data: trail
                         })
                     }}>Create Group</button>
                 </div>
