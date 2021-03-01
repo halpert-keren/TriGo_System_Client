@@ -20,6 +20,7 @@ const GroupPage = (props) => {
     const [group, setGroup] = useState({});
     const [trail, setTrail] = useState({});
     const [open, setOpen] = useState(false);
+    const [images, setImages] = useState([]);
 
     useEffect(() => {
         fetch(`http://localhost:3000/api/groups/${props.location.data}`, {
@@ -28,17 +29,23 @@ const GroupPage = (props) => {
         })
             .then(response => response.json())
             .then(result => {
-                fetch(`http://localhost:3000/api/trails/${result.trail}`, {
-                    credentials: 'include',
-                    headers: {'Content-Type': 'application/json'}
-                })
-                    .then(responseTwo => responseTwo.json())
-                    .then(resultTwo => {
-                        console.log(result)
-                        setGroup(result)
-                        console.log(resultTwo)
-                        setTrail(resultTwo)
-                    })
+                setGroup(result)
+                setImages(
+                    result.trail.images.map(url => ({
+                        original: `${url}`
+                    }))
+                )
+                // fetch(`http://localhost:3000/api/trails/${result.trail}`, {
+                //     credentials: 'include',
+                //     headers: {'Content-Type': 'application/json'}
+                // })
+                //     .then(responseTwo => responseTwo.json())
+                //     .then(resultTwo => {
+                //         console.log(result)
+                //         setGroup(result)
+                //         console.log(resultTwo)
+                //         setTrail(resultTwo)
+                //     })
             })
     }, [props.location.data])
 
@@ -80,7 +87,7 @@ const GroupPage = (props) => {
                     <h1>{group.name}</h1>
                     <div className={'info-item'}>
                         <LocationOnRoundedIcon fontSize={'large'}/>
-                        <h3>{trail ? trail.name : 'no info'}</h3>
+                        <h3>{group.trail ? group.trail.name:'no info'}</h3>
                     </div>
                     <div className={'info-item'}>
                         <TodayRoundedIcon fontSize={'large'}/>
@@ -105,7 +112,7 @@ const GroupPage = (props) => {
                 </div>
                 <div className={'group-page-img'}>
                     <ImageGallery showPlayButton={false} showNav={false} autoPlay={true}
-                                  showFullscreenButton={false} showThumbnails={false} items={[{original:image}]}/>
+                                  showFullscreenButton={false} showThumbnails={false} items={images? images:[{original:image}]}/>
                 </div>
             </div>
         </>

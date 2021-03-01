@@ -77,8 +77,10 @@ const GroupFilterList = (props) => {
     const getUrl = () => {
         let url = 'http://localhost:3000/api/groups/?'
 
-        url = url.concat(`date=${date}&`)
-        url = url.concat(`time=${time}&`)
+        if(date !== '')
+            url = url.concat(`date=${date}&`)
+        if(time !== '')
+            url = url.concat(`time=${time}&`)
 
         if (areaChecks[1]) url = url.concat('area=Golan-Heights&')
         if (areaChecks[2]) url = url.concat('area=Upper-Galilee&')
@@ -122,6 +124,8 @@ const GroupFilterList = (props) => {
         if (timeOfDayChecks[2]) url = url.concat('timeOfDay=Afternoon&')
         if (timeOfDayChecks[3]) url = url.concat('timeOfDay=Night&')
 
+        if(url === 'http://localhost:3000/api/groups/?')
+            url = 'http://localhost:3000/api/groups'
         props.setUrl(url)
     }
 

@@ -11,6 +11,7 @@ const HomePage = (props) => {
     const [selected, setSelected] = useState('trails');
 
     useEffect(() => {
+        console.log(url)
         fetch(url, {
             credentials: 'include',
             headers: {'Content-Type': 'application/json'}
