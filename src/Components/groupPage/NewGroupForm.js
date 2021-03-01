@@ -46,8 +46,9 @@ const GroupForm = (props) => {
         })
     }
 
-    const addNewGroup = (users) => {
-        console.log(users)
+    const addNewGroup = () => {
+
+        console.log('users')
         if (inviteUser[inviteUser.length - 1] === '')
             inviteUser.pop()
         inviteUser.unshift(cookies.user.email)
@@ -136,8 +137,8 @@ const GroupForm = (props) => {
                                       onChange={e => setDescription(e.target.value)}/>
                         </div>
                         <div className={'form-btns'}>
-                            <button className={'success'} onClick={getUserIDs}>Create</button>
-                            <button className={'failure'} onClick={() => history.goBack()}>Cancel</button>
+                            <button className={'success'} onClick={addNewGroup}>Create</button>
+                            <button className={'failure'} onClick={() => history.push('/home')}>Cancel</button>
                         </div>
                     </div>
                 </div>
