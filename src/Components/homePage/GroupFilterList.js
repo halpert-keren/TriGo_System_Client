@@ -72,7 +72,7 @@ const GroupFilterList = (props) => {
 
     useEffect(() => {
         getUrl()
-    }, [areaChecks, difficultyChecks, accessibilityChecks, picnicAreaChecks, lengthChecks, lengthOfTimeChecks, timeOfDayChecks])
+    }, [date, time, areaChecks, difficultyChecks, accessibilityChecks, picnicAreaChecks, lengthChecks, lengthOfTimeChecks, timeOfDayChecks])
 
     const getUrl = () => {
         let url = 'http://localhost:3000/api/groups/?'
@@ -82,47 +82,89 @@ const GroupFilterList = (props) => {
         if(time !== '')
             url = url.concat(`time=${time}&`)
 
-        if (areaChecks[1]) url = url.concat('area=Golan-Heights&')
-        if (areaChecks[2]) url = url.concat('area=Upper-Galilee&')
-        if (areaChecks[3]) url = url.concat('area=Lower-Galilee&')
-        if (areaChecks[4]) url = url.concat('area=Western-Galilee&')
-        if (areaChecks[5]) url = url.concat('area=Coastal-Plain&')
-        if (areaChecks[6]) url = url.concat('area=Mount-Carmel&')
-        if (areaChecks[7]) url = url.concat('area=Jezreel-Valley&')
-        if (areaChecks[8]) url = url.concat('area=Judea-and-Samaria&')
-        if (areaChecks[9]) url = url.concat('area=Shephelah&')
-        if (areaChecks[10]) url = url.concat('area=Central-District&')
-        if (areaChecks[11]) url = url.concat('area=Aravah&')
-        if (areaChecks[12]) url = url.concat('area=Northern-Negev&')
-        if (areaChecks[13]) url = url.concat('area=Southern-Negev&')
+        let areaUrl = 'area=['
+        if (areaChecks[1]) areaUrl = areaUrl.concat("\"Golan-Heights\",")
+        if (areaChecks[2]) areaUrl = areaUrl.concat("\"Upper-Galilee\",")
+        if (areaChecks[3]) areaUrl = areaUrl.concat("\"Lower-Galilee\",")
+        if (areaChecks[4]) areaUrl = areaUrl.concat("\"Western-Galilee\",")
+        if (areaChecks[5]) areaUrl = areaUrl.concat("\"Coastal-Plain\",")
+        if (areaChecks[6]) areaUrl = areaUrl.concat("\"Mount-Carmel\",")
+        if (areaChecks[7]) areaUrl = areaUrl.concat("\"Jezreel-Valley\",")
+        if (areaChecks[8]) areaUrl = areaUrl.concat("\"Judea-and-Samaria\",")
+        if (areaChecks[9]) areaUrl = areaUrl.concat("\"Shephelah\",")
+        if (areaChecks[10]) areaUrl = areaUrl.concat("\"Central-District\",")
+        if (areaChecks[11]) areaUrl = areaUrl.concat("\"Aravah\",")
+        if (areaChecks[12]) areaUrl = areaUrl.concat("\"Northern-Negev\",")
+        if (areaChecks[13]) areaUrl = areaUrl.concat("\"Southern-Negev\",")
+        if(areaUrl !== 'area=[') {
+            areaUrl = areaUrl.substring(0,areaUrl.length-1);
+            areaUrl = areaUrl.concat("]&")
+            url = url.concat(areaUrl)
+        }
 
-        if (difficultyChecks[1]) url = url.concat('difficulty=Easy&')
-        if (difficultyChecks[2]) url = url.concat('difficulty=Intermediate&')
-        if (difficultyChecks[3]) url = url.concat('difficulty=Hard&')
-        if (difficultyChecks[4]) url = url.concat('difficulty=Extreme&')
+        let difficultyUrl = 'difficulty=['
+        if (difficultyChecks[1]) difficultyUrl = difficultyUrl.concat("\"Easy\",")
+        if (difficultyChecks[2]) difficultyUrl = difficultyUrl.concat("\"Intermediate\",")
+        if (difficultyChecks[3]) difficultyUrl = difficultyUrl.concat("\"Hard\",")
+        if (difficultyChecks[4]) difficultyUrl = difficultyUrl.concat("\"Extreme\",")
+        if(difficultyUrl !== 'difficulty=[') {
+            difficultyUrl = difficultyUrl.substring(0,difficultyUrl.length-1);
+            difficultyUrl = difficultyUrl.concat("]&")
+            url = url.concat(difficultyUrl)
+        }
 
-        if (accessibilityChecks[1]) url = url.concat('accessibility=Kid-friendly&')
-        if (accessibilityChecks[2]) url = url.concat('accessibility=Wheelchair-Accessible&')
-        if (accessibilityChecks[3]) url = url.concat('accessibility=Car-accessible&')
+        let accessibilityUrl = 'accessibility=['
+        if (accessibilityChecks[1]) accessibilityUrl = accessibilityUrl.concat("\"Kid-friendly\",")
+        if (accessibilityChecks[2]) accessibilityUrl = accessibilityUrl.concat("\"Wheelchair-Accessible\",")
+        if (accessibilityChecks[3]) accessibilityUrl = accessibilityUrl.concat("\"Car-accessible\",")
+        if(accessibilityUrl !== 'accessibility=[') {
+            accessibilityUrl = accessibilityUrl.substring(0,accessibilityUrl.length-1);
+            accessibilityUrl = accessibilityUrl.concat("]&")
+            url = url.concat(accessibilityUrl)
+        }
 
-        if (picnicAreaChecks[1]) url = url.concat('picnicArea=false&')
-        if (picnicAreaChecks[2]) url = url.concat('picnicArea=true&')
+        let picnicAreaUrl = 'picnicArea=['
+        if (picnicAreaChecks[1]) picnicAreaUrl = picnicAreaUrl.concat("\"false\",")
+        if (picnicAreaChecks[2]) picnicAreaUrl = picnicAreaUrl.concat("\"true\",")
+        if(picnicAreaUrl !== 'picnicArea=[') {
+            picnicAreaUrl = picnicAreaUrl.substring(0,picnicAreaUrl.length-1);
+            picnicAreaUrl = picnicAreaUrl.concat("]&")
+            url = url.concat(picnicAreaUrl)
+        }
 
-        if (lengthChecks[1]) url = url.concat('length=Less-than-1-km&')
-        if (lengthChecks[2]) url = url.concat('length=1-to-5-km&')
-        if (lengthChecks[3]) url = url.concat('length=5-to-10-km&')
-        if (lengthChecks[4]) url = url.concat('length=10-to-20-km&')
-        if (lengthChecks[5]) url = url.concat('length=More-than-20-km&')
+        let lengthUrl = 'length=['
+        if (lengthChecks[1]) lengthUrl = lengthUrl.concat("\"length=Less-than-1-km\",")
+        if (lengthChecks[2]) lengthUrl = lengthUrl.concat("\"length=1-to-5-km\",")
+        if (lengthChecks[3]) lengthUrl = lengthUrl.concat("\"length=5-to-10-km\",")
+        if (lengthChecks[4]) lengthUrl = lengthUrl.concat("\"length=10-to-20-km\",")
+        if (lengthChecks[5]) lengthUrl = lengthUrl.concat("\"length=More-than-20-km\",")
+        if(lengthUrl !== 'length=[') {
+            lengthUrl = lengthUrl.substring(0,lengthUrl.length-1);
+            lengthUrl = lengthUrl.concat("]&")
+            url = url.concat(lengthUrl)
+        }
 
-        if (lengthOfTimeChecks[1]) url = url.concat('lengthOfTime=Less-than-an-hour&')
-        if (lengthOfTimeChecks[2]) url = url.concat('lengthOfTime=1-to-3-hours&')
-        if (lengthOfTimeChecks[3]) url = url.concat('lengthOfTime=3-to-6-hours&')
-        if (lengthOfTimeChecks[4]) url = url.concat('lengthOfTime=6-to-10-hours&')
-        if (lengthOfTimeChecks[5]) url = url.concat('lengthOfTime=More-than-10-hours&')
+        let lengthOfTimeUrl = 'lengthOfTime=['
+        if (lengthOfTimeChecks[1]) lengthOfTimeUrl = lengthOfTimeUrl.concat("\"lengthOfTime=Less-than-an-hour\",")
+        if (lengthOfTimeChecks[2]) lengthOfTimeUrl = lengthOfTimeUrl.concat("\"lengthOfTime=1-to-3-hours\",")
+        if (lengthOfTimeChecks[3]) lengthOfTimeUrl = lengthOfTimeUrl.concat("\"lengthOfTime=3-to-6-hours\",")
+        if (lengthOfTimeChecks[4]) lengthOfTimeUrl = lengthOfTimeUrl.concat("\"lengthOfTime=6-to-10-hours\",")
+        if (lengthOfTimeChecks[5]) lengthOfTimeUrl = lengthOfTimeUrl.concat("\"lengthOfTime=More-than-10-hours\",")
+        if(lengthOfTimeUrl !== 'lengthOfTime=[') {
+            lengthOfTimeUrl = lengthOfTimeUrl.substring(0,lengthOfTimeUrl.length-1);
+            lengthOfTimeUrl = lengthOfTimeUrl.concat("]&")
+            url = url.concat(lengthOfTimeUrl)
+        }
 
-        if (timeOfDayChecks[1]) url = url.concat('timeOfDay=Morning&')
-        if (timeOfDayChecks[2]) url = url.concat('timeOfDay=Afternoon&')
-        if (timeOfDayChecks[3]) url = url.concat('timeOfDay=Night&')
+        let timeOfDayUrl = 'timeOfDay=['
+        if (timeOfDayChecks[1]) timeOfDayUrl = timeOfDayUrl.concat("\"Morning\",")
+        if (timeOfDayChecks[2]) timeOfDayUrl = timeOfDayUrl.concat("\"Afternoon\",")
+        if (timeOfDayChecks[3]) timeOfDayUrl = timeOfDayUrl.concat("\"Night\",")
+        if(timeOfDayUrl !== 'timeOfDay=[') {
+                    timeOfDayUrl = timeOfDayUrl.substring(0,timeOfDayUrl.length-1);
+                    timeOfDayUrl = timeOfDayUrl.concat("]&")
+                    url = url.concat(timeOfDayUrl)
+                }
 
         if(url === 'http://localhost:3000/api/groups/?')
             url = 'http://localhost:3000/api/groups'
