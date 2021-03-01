@@ -26,7 +26,6 @@ const RequestListItem = (props) => {
     }, [props.item.groupID])
 
     const acceptRequest = () =>{
-        // send email
         const body={
             users: props.item.requesterID
         }
@@ -46,13 +45,12 @@ const RequestListItem = (props) => {
                     .then(response => response.json())
                     .then(result => {
                         props.update()
-                        setOpenAccept(true)
+                        // setOpenAccept(true)
                     })
             })
     }
 
     const declineRequest = () =>{
-        // send email
         fetch(`http://localhost:3000/api/requests/${props.item._id}`, {
             method: 'DELETE',
             credentials: 'include',
@@ -61,7 +59,7 @@ const RequestListItem = (props) => {
             .then(response => response.json())
             .then(result => {
                 props.update()
-                setOpenDelete(true)
+                // setOpenDecline(true)
             })
     }
 
@@ -74,8 +72,33 @@ const RequestListItem = (props) => {
             .then(response => response.json())
             .then(result => {
                 props.update()
-                setOpenDecline(true)
+                // setOpenDelete(true)
             })
+    }
+
+    // pop up for accept request
+    async function timeAcceptAction(){
+        setOpenAccept(true)
+        await sleep(4000)
+        acceptRequest()
+    }
+
+    // pop up for decline request
+    async function timeDeclineAction(){
+        setOpenDecline(true)
+        await sleep(4000)
+        declineRequest()
+    }
+
+    // pop up for cancel request
+    async function timeDeleteAction(){
+        setOpenDelete(true)
+        await sleep(4000)
+        deleteRequest()
+    }
+
+    const sleep = (milliseconds) => {
+        return new Promise(resolve => setTimeout(resolve, milliseconds))
     }
 
     const acceptModal = (
@@ -120,11 +143,11 @@ const RequestListItem = (props) => {
                     {cookies.user.email === props.item.ownerID ?
                         (
                             <>
-                                <button className={'accept'} onClick={acceptRequest}> accept</button>
-                                <button className={'decline'} onClick={declineRequest}> decline</button>
+                                <button className={'accept'} onClick={timeAcceptAction}> accept</button>
+                                <button className={'decline'} onClick={timeDeclineAction}> decline</button>
                             </>
                         ) : (
-                            <button className={'cancel'} onClick={deleteRequest}> cancel </button>)
+                            <button className={'cancel'} onClick={timeDeleteAction}> cancel </button>)
                     }
                 </CardActions>
                 </div>
