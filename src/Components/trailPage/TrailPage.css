@@ -43,6 +43,7 @@
 
 .info-item p {
     font-size: 120%;
+    max-width: 20%;
 }
 
 /*.info-item h3 {*/

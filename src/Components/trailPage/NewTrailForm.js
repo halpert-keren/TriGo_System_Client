@@ -193,7 +193,7 @@ const TrailForm = (props) => {
                                         setEquipment(list)
                                     }}>}
                                 <option value="">Select</option>
-                                <option value="'water'">water</option>
+                                <option value="water">water</option>
                                 <option value="chairs">chairs</option>
                                 <option value="hats">hats</option>
                                 <option value="hiking boots">hiking boots</option>

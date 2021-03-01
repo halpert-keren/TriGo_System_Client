@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import './MyGroups.css'
-import image from '../shared/imagePlaceholder.png'
+import image from '../shared/groupPlaceholder.png'
 import ListItem from "../shared/ListItem";
 import Header from "../shared/Header";
 import {useCookies} from "react-cookie";
@@ -10,7 +10,7 @@ import {IconButton} from "@material-ui/core";
 
 const MyGroups = (props) => {
     const [cookies] = useCookies(['user']);
-    const [groupList, setGroupList] = useState([]);
+    const [groupList, setGroupList] = useState(null);
 
     useEffect(() => {
         fetch(`http://localhost:3000/api/groups/?email=${cookies.user.email}`, {
@@ -21,7 +21,7 @@ const MyGroups = (props) => {
             .then(result => {
                 setGroupList(result)
             })
-    }, [])
+    })
 
     const eachItem = (item, index) => {
         return (<ListItem type={'group'} key={index} item={item} path={'/group'} images={[image]}/>)
@@ -42,7 +42,7 @@ const MyGroups = (props) => {
                 </IconButton>
                 <h2>My Groups</h2>
                 <div className={'result-list'}>
-                    {groupList.map(eachItem)}
+                    {groupList ? groupList.map(eachItem): null}
                 </div>
             </div>
         </>

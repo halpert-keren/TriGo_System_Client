@@ -5,7 +5,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import {CardActions} from "@material-ui/core";
 import {useCookies} from "react-cookie";
-import {IconButton, Modal} from "@material-ui/core";
+import {Modal} from "@material-ui/core";
 
 const RequestListItem = (props) => {
     const [cookies] = useCookies(['user']);
@@ -26,6 +26,7 @@ const RequestListItem = (props) => {
     }, [props.item.groupID])
 
     const acceptRequest = () =>{
+        // send email
         const body={
             users: props.item.requesterID
         }
@@ -51,6 +52,7 @@ const RequestListItem = (props) => {
     }
 
     const declineRequest = () =>{
+        // send email
         fetch(`http://localhost:3000/api/requests/${props.item._id}`, {
             method: 'DELETE',
             credentials: 'include',
@@ -115,7 +117,7 @@ const RequestListItem = (props) => {
                 </CardContent>
                 <div className={'btns'}>
                 <CardActions>
-                    {cookies.user.googleID === props.item.ownerID ?
+                    {cookies.user.email === props.item.ownerID ?
                         (
                             <>
                                 <button className={'accept'} onClick={acceptRequest}> accept</button>
