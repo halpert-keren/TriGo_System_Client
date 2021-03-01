@@ -1,5 +1,6 @@
 import React from "react";
 import './ListItem.css'
+import image from '../shared/imagePlaceholder.png'
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -31,7 +32,7 @@ const ListItem = (props) => {
                     </CardContent>
                      <CardMedia className={'card-img'}
                                component="img"
-                               image={props.images && props.images[0] ? props.images[0] : 'https://breakthrough.org/wp-content/uploads/2018/10/default-placeholder-image.png'}
+                               image={props.images && props.images[0] ? props.images[0] : image}
                                title="image of trail"
                     />
                 </CardActionArea>

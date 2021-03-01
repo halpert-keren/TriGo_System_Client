@@ -1,21 +1,14 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import './ResultList.css'
+import image from '../shared/imagePlaceholder.png'
 import ListItem from "../shared/ListItem";
 
 const ResultList = (props) => {
     const eachItem = (item, index) => {
-        let images = []
-        if(props.type === 'trail') {
-            images = item.images
-        } else {
-            fetch(`http://localhost:3000/api/trails/${item.trail}`, {
-                credentials: 'include',
-                headers: {'Content-Type': 'application/json'}
-            })
-                .then(response => response.json())
-                .then(result => <ListItem type={props.type}  key={index} item={item} path={props.path} images={result.images}/>)
-        }
-        return (<ListItem type={props.type} key={index} item={item} path={props.path} images={images}/>)
+        if(props.type === 'trail')
+            return (<ListItem type={props.type} key={index} item={item} path={props.path} images={item.images}/>)
+        else
+            return (<ListItem type={props.type} key={index} item={item} path={props.path} images={[image]}/>)
     }
     
     return (
