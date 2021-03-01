@@ -20,7 +20,7 @@ const GroupPage = (props) => {
     const [group, setGroup] = useState({});
     const [trail, setTrail] = useState({});
     const [images, setImages] = useState(null);
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
 
     useEffect(() => {
         fetch(`http://localhost:3000/api/groups/${props.location.data}`, {
@@ -62,7 +62,7 @@ const GroupPage = (props) => {
         })
             .then(response => response.json())
             .then(result => {
-                console.log(result)
+                setOpen(true)
             })
     }
 
@@ -107,7 +107,7 @@ const GroupPage = (props) => {
                     <div className={'info-item'}>
                         <p>{group.description}</p>
                     </div>
-                    <button className={'success'} onClick={()=>setOpen(true)}>Join</button>
+                    <button className={'success'} onClick={joinGroup}>Join</button>
                 </div>
                 <div className={'group-page-img'}>
                     <ImageGallery showPlayButton={false} showNav={false} autoPlay={true}
