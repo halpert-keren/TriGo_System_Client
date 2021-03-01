@@ -148,7 +148,7 @@ const TrailPage = (props) => {
                     }}>Create Group</button>
                 </div>
                 <div className={'trail-page-img'}>
-                    <ImageGallery showPlayButton={false} showNav={false} autoPlay={true} slideInterval={10000}
+                    <ImageGallery showPlayButton={false} showNav={false} autoPlay={true} slideInterval={5000}
                                   showFullscreenButton={false} showThumbnails={false}  items={images? images:[{original:'https://breakthrough.org/wp-content/uploads/2018/10/default-placeholder-image.png'}]}/>
                 </div>
             </div>
